@@ -1,0 +1,8 @@
+echo "Darwin now"
+
+alias emacs="open -a Emacs"
+
+fmount2() {
+    echo "mounting $1"
+    osascript -e "tell application \"Finder\" to mount volume \"$1\""
+}

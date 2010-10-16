@@ -1,0 +1,2 @@
+#!/bin/sh
+osascript -e 'tell application "System Events" to key code 28 using {command down, option down, control down}'

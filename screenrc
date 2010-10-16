@@ -1,0 +1,18 @@
+escape ^z^Z
+hardstatus alwayslastline "$__session_name: %-w%{=b bw}%n %t%{-}%+w"
+
+defhstatus I^En:^EtI
+startup_message off
+defscrollback 10000
+autodetach on
+defmonitor off
+bind 2 split
+bind o focus
+bind 1 only
+bind 0 remove
+bind \^ resize
+vbell off
+
+
+bind j exec | /usr/local/bin/uim-fep -s lastline -S
+bind k eval 'exec cat' kill redisplay

@@ -1,0 +1,5 @@
+#compdef s
+
+sessions=$(screen -ls | awk '{ FS = "[\. \t]+" } /tached/ { print $3 }')
+_arguments "1:first:($sessions)"
+

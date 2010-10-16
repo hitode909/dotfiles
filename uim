@@ -1,0 +1,5 @@
+(define default-im-name 'skk)
+(define skk-dic-file-name (string-append (getenv "HOME") "/.emacs.d/etc/skk/SKK-JISYO.L"))
+
+(define skk-show-annotation? #t)
+(define skk-egg-like-newline? #t)
