@@ -1,0 +1,5 @@
+# name: tt foreach directive
+# --
+[%- FOREACH ${1:item} IN ${2:list} %]
+$0
+[%- END %]

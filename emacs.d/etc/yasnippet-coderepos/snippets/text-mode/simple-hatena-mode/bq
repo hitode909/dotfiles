@@ -1,0 +1,6 @@
+# name: >url:title>quoted text<<
+# --
+>${1:url}:title>
+${2:quoted text}
+<<
+$0

@@ -1,0 +1,4 @@
+#name : ... if ...
+# --
+${1:expression} if ${2:condition};
+$0

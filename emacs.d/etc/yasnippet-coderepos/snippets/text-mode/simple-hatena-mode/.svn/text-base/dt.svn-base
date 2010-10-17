@@ -1,0 +1,3 @@
+# name: :term:definition
+# --
+:${1:term}:${2:definition}$0

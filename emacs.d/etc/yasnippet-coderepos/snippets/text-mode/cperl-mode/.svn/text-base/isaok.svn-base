@@ -1,0 +1,4 @@
+#name : isa_ok($object, $class);
+# --
+isa_ok(\$${1:object}, '${2:class}');
+$0

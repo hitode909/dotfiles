@@ -1,0 +1,6 @@
+#name : TODO: { todo_skip ... }
+# --
+TODO: {
+    todo_skip ${1:why}, ${2:how_many} if ${3:condition};
+    $0
+}

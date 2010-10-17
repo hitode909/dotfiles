@@ -1,0 +1,3 @@
+# name: tt variable
+# --
+[% ${1:variable}$0 %]

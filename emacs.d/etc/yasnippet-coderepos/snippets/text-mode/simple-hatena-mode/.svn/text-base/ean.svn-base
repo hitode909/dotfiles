@@ -1,0 +1,3 @@
+# name: ean:ean code
+# --
+ean:${1:ean code}$0

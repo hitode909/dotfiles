@@ -1,0 +1,10 @@
+#name : switch ( ... ) { case: ... break; default:  }
+# --
+switch (\$${1:variable}) {
+case ${2:expression}:
+    ${3://body...}
+    break;
+
+default:
+    ${4://body...}
+}

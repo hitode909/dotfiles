@@ -1,0 +1,4 @@
+#name : plan skip_all => 'reason';
+# --
+plan skip_all => '${1:reason}';
+$0

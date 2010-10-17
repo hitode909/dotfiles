@@ -1,0 +1,3 @@
+# name: a:id:hatena id
+# --
+a:id:${1:hatena id}$0

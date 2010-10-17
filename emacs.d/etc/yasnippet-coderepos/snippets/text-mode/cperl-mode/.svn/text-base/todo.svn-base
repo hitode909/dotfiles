@@ -1,0 +1,6 @@
+#name : TODO: { ... }
+# --
+TODO: {
+    local $TODO = \$${1:reason} if ${2:condition};
+    $0
+}

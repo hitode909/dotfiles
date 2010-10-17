@@ -1,0 +1,4 @@
+#name : ok($got eq $expected, $test_name);
+# --
+ok(${1:expr}, '${2:test_name}');
+$0

@@ -1,0 +1,4 @@
+#name : can_ok($module, @methods);
+# --
+can_ok('${1:module}', qw(${2:methods}));
+$0

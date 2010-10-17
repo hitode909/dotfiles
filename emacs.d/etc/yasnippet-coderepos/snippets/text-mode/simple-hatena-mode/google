@@ -1,0 +1,3 @@
+# name: [google:search word]
+# --
+[google:${1:search word}]$0

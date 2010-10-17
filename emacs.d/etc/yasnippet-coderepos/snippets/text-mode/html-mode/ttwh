@@ -1,0 +1,5 @@
+# name: tt while directive
+# --
+[%- WHILE (${1:element} = ${2:iterator}) %]
+$0
+[%- END %]

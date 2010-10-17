@@ -1,0 +1,3 @@
+# name: [tex:formula]
+# --
+[tex:${1:formula}]$0

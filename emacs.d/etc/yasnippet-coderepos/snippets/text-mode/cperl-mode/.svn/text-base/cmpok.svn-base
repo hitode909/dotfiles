@@ -1,0 +1,4 @@
+#name : cmp_ok($got, $op, $expected, $test_name);
+# --
+cmp_ok(\$${1:got}, ${2:op}, ${3:expected}, '${4:test_name}');
+$0

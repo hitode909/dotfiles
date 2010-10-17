@@ -1,0 +1,4 @@
+#name : unlike($got, qr/expected/, $test_name);
+# --
+unlike(${1:got}, qr/${2:expected}/, '${3:test_name}');
+$0

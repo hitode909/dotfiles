@@ -1,0 +1,6 @@
+# name: >|preformatted text|<
+# --
+>|
+${1:preformatted text}
+|<
+$0

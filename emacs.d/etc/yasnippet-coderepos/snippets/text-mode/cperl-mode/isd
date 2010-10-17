@@ -1,0 +1,4 @@
+#name : is_deeply($got, $expected, $test_name);
+# --
+is_deeply(\$${1:got}, ${2:expected}, '${3:test_name}');
+$0

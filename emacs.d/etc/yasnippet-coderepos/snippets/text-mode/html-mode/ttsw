@@ -1,0 +1,6 @@
+# name: tt switch directive
+# --
+[%- SWITCH ${1:variable} %]
+[%- CASE ${2:case} %]
+$0
+[%- END %]

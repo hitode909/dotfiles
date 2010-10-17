@@ -1,0 +1,4 @@
+#name : BEGIN { use_ok($module); }
+# --
+BEGIN { use_ok('${1:module}'); }
+$0

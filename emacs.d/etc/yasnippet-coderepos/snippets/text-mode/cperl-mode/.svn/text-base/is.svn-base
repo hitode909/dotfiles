@@ -1,0 +1,4 @@
+#name : is($got, $expected, $test_name);
+# --
+is(\$${1:got}, ${2:expected}, '${3:test_name}');
+$0

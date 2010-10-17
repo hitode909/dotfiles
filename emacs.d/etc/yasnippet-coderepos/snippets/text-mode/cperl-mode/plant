@@ -1,0 +1,4 @@
+#name : plan tests => num;
+# --
+plan tests => ${1:num of tests};
+$0

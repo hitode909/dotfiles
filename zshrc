@@ -319,5 +319,5 @@ setopt autopushd
 # up
 source ~/co/gist/607290/up
 
-# java1 (for cassandra)
+# java (for cassandra)
 export JAVA_HOME=$(/usr/libexec/java_home)

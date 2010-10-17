@@ -1,0 +1,4 @@
+# name: tt directive completing read
+# note: `html-tt-yasnippet-insert-directive` is defined in external config.
+# --
+`(tt-insert-directive)`$0
