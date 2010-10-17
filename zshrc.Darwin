@@ -6,3 +6,16 @@ fmount2() {
     echo "mounting $1"
     osascript -e "tell application \"Finder\" to mount volume \"$1\""
 }
+
+
+# java (for cassandra)
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+# perl
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)
+
+alias emacsclient=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
+
+export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
+
+alias less="/usr/share/vim/vim72/macros/less.sh"

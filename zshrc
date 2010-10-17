@@ -9,8 +9,7 @@ export PATH=/Applications/flex_sdk_3.4/bin:$PATH
 export PATH=/Users/fkd/Downloads/android-sdk-mac_x86-1.5_r2/tools:$PATH
 
 # ruby
-# export PATH=~/.gem/ruby/1.8/bin:~/.gem/ruby/1.9/bin:$PATH
-export PATH=~/.gem/ruby/1.9.1/bin:/usr/local/Cellar/ruby/1.9.2-p0/bin:$PATH
+export PATH=~/.gem/ruby/1.9.1/bin:/usr/local/Cellar/ruby/1.9.2-p0/bin:~/.gem/ruby/1.8/bin:~/.gem/ruby/1.9/bin:$PATH
 
 # python
 export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
@@ -29,10 +28,8 @@ SPROMPT="%r is correct? [n,y,a,e]: "
 
 fi
 
-alias emacsclient=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
 
 # chshとかcrontab -eとかで使うエディタ
-export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
 #export ALTERNATE_EDITOR=emacs
 # svnで使うエディタ
 export SVN_EDITOR=emacsclient
@@ -51,7 +48,6 @@ alias cp="cp -v"
 alias ruby="ruby -Ku"
 alias irb="irb -Ku"
 alias o="open ."
-alias less="/usr/share/vim/vim72/macros/less.sh"
 
 function e()
 {
@@ -293,25 +289,6 @@ cd $1
 fi
 }
 
-
-function specs {
-    echo "# 1.8"
-    spec $*
-    echo "# 1.9"
-    spec1.9 $*
-}
-
-function gems {
-    echo "# 1.8"
-    gem $*
-    echo "# 1.9"
-    gem1.9 $*
-}
-
-
-# perl
-eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)
-
 setopt magic_equal_subst
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
@@ -320,5 +297,4 @@ setopt autopushd
 # up
 source ~/co/gist/607290/up
 
-# java (for cassandra)
-export JAVA_HOME=$(/usr/libexec/java_home)
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
