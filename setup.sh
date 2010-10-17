@@ -10,7 +10,7 @@ fi
 
 mkdir ${HOME_PATH}/.old_dotfiles
 
-for file in functions irbrc login zshrc screenrc gitconfig gitignore elisp emacs.d emacs.el emacs.el.`uname` skk uim zshrc.`uname` folders
+for file in functions irbrc login zshrc screenrc gitconfig gitignore elisp emacs.d emacs.el emacs.el.`uname` skk uim zshrc.`uname` folders gemrc
 do
     echo "${file}"
     mv ${HOME_PATH}/.${file} ${HOME_PATH}/.old_dotfiles/.${file}

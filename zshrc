@@ -9,7 +9,8 @@ export PATH=/Applications/flex_sdk_3.4/bin:$PATH
 export PATH=/Users/fkd/Downloads/android-sdk-mac_x86-1.5_r2/tools:$PATH
 
 # ruby
-export PATH=~/.gem/ruby/1.8/bin:~/.gem/ruby/1.9/bin:$PATH
+# export PATH=~/.gem/ruby/1.8/bin:~/.gem/ruby/1.9/bin:$PATH
+export PATH=~/.gem/ruby/1.9.1/bin:/usr/local/Cellar/ruby/1.9.2-p0/bin:$PATH
 
 # python
 export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
@@ -190,7 +191,7 @@ zstyle ':completion:*:default' menu select=1
 # fi
 
 # set_proxy
-source ~/co/gist/630018/set_school
+source ~/co/gist/630018/set_proxy
 
 # pb
 source ~/co/gist/370647/pb
