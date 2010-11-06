@@ -34,7 +34,7 @@ fi
 # svnで使うエディタ
 export SVN_EDITOR=emacsclient
 #require rubygems
-export RUBYOPT="rubygems"
+# export RUBYOPT="rubygems"
 
 # alias
 alias du="du -h"
@@ -45,8 +45,8 @@ alias ll="ls -lh"
 alias lla="ls -lha"
 alias emacs="emacs -nw"
 alias cp="cp -v"
-alias ruby="ruby -Ku"
-alias irb="irb -Ku"
+# alias ruby="ruby -Ku"
+# alias irb="irb -Ku"
 alias o="open ."
 
 function e()
