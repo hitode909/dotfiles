@@ -17,6 +17,9 @@ export PYTHONPATH="/usr/local/lib/python2.6/site-packages/:$PYTHONPATH"
 # rsense
 export PATH=~/.emacs.d/etc/rsense-0.3/bin/:$PATH
 
+# pkg-config
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:${PKG_CONFIG_PATH}
+
 if [ "$TERM" != "dumb" ]; then
 # プロンプトの設定　右にpwd出したり
 case $UID in
