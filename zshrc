@@ -2,6 +2,9 @@
 export PATH=/usr/local/bin:~/bin:~/co/commands/bin:$PATH
 export PATH=/opt/local/bin:$PATH
 
+# mactex
+export PATH=/usr/texbin:$PATH
+
 # flex
 export PATH=/Applications/flex_sdk_3.4/bin:$PATH
 
