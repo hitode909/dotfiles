@@ -292,6 +292,40 @@ cd $1
 fi
 }
 
+
+function git () {
+	if [[ -e '.svn' ]]; then
+		if [[ $1 == "log" ]]; then
+			command svn $@ | $PAGER
+		else
+			command svn $@
+		fi
+		echo
+		echo "x| _ |x < .svn があったので svn コマンドにしました!"
+	else
+		if [[ $1 == "" ]]; then
+			# git ってだけうったときは status 表示
+			command git --no-pager branch-recent && \
+			command git --no-pager diff --stat --color-words && \
+			command git --no-pager status \
+			| $PAGER
+		elif [[ $1 == "log" ]]; then
+			# 常に diff を表示してほしい
+			command git log -p ${@[2, -1]}
+		elif [[ $1 == "pull" ]]; then
+			if [[ ( -x '.git/pull-chain' ) ]]; then
+				command git $@
+				asyncrun ./.git/pull-chain
+			else
+				command git $@
+			fi
+		else
+			command git $@
+		fi
+	fi
+}
+
+
 setopt magic_equal_subst
 autoload -Uz url-quote-magic
 zle -N self-insert url-quote-magic
