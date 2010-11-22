@@ -317,9 +317,10 @@
 
 
 (global-unset-key "\C-xvd")
-(require 'egg)
-(global-set-key [(super s)] 'egg-status)
-(global-set-key [(super l)] 'egg-log)
+(require 'magit)
+(global-set-key [(super s)] 'magit-status)
+(global-set-key [(super l)] 'magit-log)
+
 
 
 
@@ -339,7 +340,7 @@
 
 (define-key global-map [(super p)] 'scroll-one-line-down)
 
-(define-key global-map [(super g)] 'global-outputz-mode)
+;; (define-key global-map [(super g)] 'global-outputz-mode)
 
 (defun my-byte-compile ()
   "byte compileします"

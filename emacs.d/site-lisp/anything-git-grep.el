@@ -1,44 +1,48 @@
-(defun anything-define-kyr-grep (command)
-  (lexical-let ((command command))
-    (lambda ()
-      (interactive)
-      (let ((query (read-string "Grep query: " (or (thing-at-point 'symbol) "")))
-            (root-dir (agrep-find-project-root-dir
-                       (or (and buffer-file-name (file-name-directory (buffer-file-name)))
-                           (expand-file-name default-directory)
-                           (expand-file-name "~")))))
-        (when (and query root-dir)
-          (anything-grep-base
-           (list
-            (agrep-source (format (agrep-preprocess-command command)
-                                  (shell-quote-argument query)) root-dir))))))))
+(defvar anything-c-source-git-grep-cache nil "(path)")
 
-(defun agrep-find-project-root-dir (dir)
-  "Determine whether the given directory is project root dir.
-This function checks parent directories recursively. If this
-function found the user's home directory or the system root directory,
-returns nil."
-  (let* ((expanded-dir (expand-file-name dir))
-        (file (some 'agrep-resource--project-filep (directory-files expanded-dir))))
-    (if file expanded-dir
-      (if (or
-           (string= expanded-dir "/")
-           (string= expanded-dir (expand-file-name "~/"))
-           ) nil
-        (agrep-find-project-root-dir
-         (concat (file-name-as-directory dir) ".."))))))
+(defun anything-git-grep-init ()
+  (lexical-let* ((top-dir
+                  (magit-get-top-dir
+                   (if (buffer-file-name)
+                       (file-name-directory (buffer-file-name))
+                     default-directory))))
+    (setq anything-c-source-git-grep-cache
+          (if (magit-git-repo-p top-dir) (list top-dir) nil))))
 
-(defvar agrep-project-root-files
-  '("build.xml" "prj.el" ".project" "pom.xml"
-    "Makefile" "configure" "Rakefile"
-    "NAnt.build" "Makefile.PL"))
+(defun anything-git-grep-process ()
+  (if anything-c-source-git-grep-cache
+      (let ((default-directory (first anything-c-source-git-grep-cache)))
+        (start-process "git-grep-process" nil
+                       "git" "--no-pager" "grep" "-n" "--no-color" "--"
+                       anything-pattern))
+    '()))
 
-(defun agrep-resource--project-filep (file)
-  "Determine whether the given file is a project build file.
-The current implementation checks
-`agrep-project-root-files'."
-  (find file
-        agrep-project-root-files
-        :test 'string=))
+(defun anything-git-grep-transformer (cds source)
+  (mapcar (lambda (x)
+            (lexical-let* ((list (split-string x ":"))
+                           (file-name (first list))
+                           (line-number (second list))
+                           (line (apply 'concat (cddr list))))
+              (cons (format "%s:%s:\n  %s" file-name line-number line) x)))
+          cds))
+
+(defun anything-git-grep-goto (x)
+  (lexical-let* ((list (split-string x ":"))
+                 (file-name (first list))
+                 (line-number (second list))
+                 (top-dir (first anything-c-source-git-grep-cache)))
+    (find-file (file-truename (expand-file-name file-name top-dir)))
+    (goto-line (string-to-number line-number))))
+
+(defvar anything-c-source-git-grep
+  '((name . "Git Grep")
+    (multiline)
+    (init . anything-git-grep-init)
+    (candidates . anything-git-grep-process)
+    (filtered-candidate-transformer anything-git-grep-transformer)
+    (action . (("Goto " . anything-git-grep-goto)))
+    (requires-pattern . 3)
+    (volatile)
+    (delayed)))
 
 (provide 'anything-git-grep)

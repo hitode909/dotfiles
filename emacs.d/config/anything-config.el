@@ -1,7 +1,7 @@
 (require 'anything-config)
 
 ;; アルファベットで選択
-(setq anything-enable-digit-shortcuts 'alphabet)
+;; (setq anything-enable-digit-shortcuts 'alphabet)
 
 ;;; anything-c-moccurの設定
 
@@ -103,6 +103,13 @@
   (anything-other-buffer 'nym:anything-find-file "*anything find-file*"))
 
 (global-set-key (kbd "M-p") 'anything-project)
+
+(require 'anything-git-grep)
+(defun anything-git-grep ()
+  (interactive)
+  (anything-other-buffer 'anything-c-source-git-grep "*anything find-file*"))
+
+(global-set-key  [(super o)] 'anything-git-grep)
 
 ;; (define-key global-map [(super t)] 'anything-timers)
 
