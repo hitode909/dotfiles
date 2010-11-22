@@ -1,3 +1,7 @@
+(require 'cl)
+(require 'magit)
+(provide 'anything-git-grep)
+
 (defvar anything-c-source-git-grep-cache nil "(path)")
 
 (defun anything-git-grep-init ()
@@ -12,9 +16,27 @@
 (defun anything-git-grep-process ()
   (if anything-c-source-git-grep-cache
       (let ((default-directory (first anything-c-source-git-grep-cache)))
-        (start-process "git-grep-process" nil
-                       "git" "--no-pager" "grep" "-n" "--no-color" "--"
-                       anything-pattern))
+        (apply 'start-process "git-grep-process" nil
+               "git" "--no-pager" "grep" "--full-name" "-n" "--no-color"
+               (nbutlast
+                (apply 'append
+                       (mapcar
+                        (lambda (x) (list "-e" x "--and"))
+                        (split-string anything-pattern "[ \t]" t))))))
+    '()))
+
+(defun anything-git-submodule-grep-process ()
+  (if anything-c-source-git-grep-cache
+      (let ((default-directory (first anything-c-source-git-grep-cache)))
+        (start-process-shell-command
+         "git-submodule-grep-process" nil
+         "git" "--no-pager" "submodule" "foreach"
+         (format "'git grep --full-name -n --no-color %s | sed s!^!$path/!'"
+                 (mapconcat (lambda (x)
+                              (format "-e %s " (shell-quote-argument x)))
+                            (split-string anything-pattern "[ \t]" t)
+                            "--and "))
+         " | grep -v '^Entering '"))
     '()))
 
 (defun anything-git-grep-transformer (cds source)
@@ -40,9 +62,18 @@
     (init . anything-git-grep-init)
     (candidates . anything-git-grep-process)
     (filtered-candidate-transformer anything-git-grep-transformer)
-    (action . (("Goto " . anything-git-grep-goto)))
+    (action . (("Git Grep Goto " . anything-git-grep-goto)))
     (requires-pattern . 3)
     (volatile)
     (delayed)))
 
-(provide 'anything-git-grep)
+(defvar anything-c-source-git-submodule-grep
+  '((name . "Git Submodule Grep")
+    (multiline)
+    (init . anything-git-grep-init)
+    (candidates . anything-git-submodule-grep-process)
+    (filtered-candidate-transformer anything-git-grep-transformer)
+    (action . (("Git Submodule Grep Goto " . anything-git-grep-goto)))
+    (requires-pattern . 3)
+    (volatile)
+    (delayed)))
