@@ -1,6 +1,6 @@
 # path
 export PATH=/usr/local/bin:~/bin:~/co/commands/bin:$PATH
-export PATH=/opt/local/bin:$PATH
+# export PATH=/opt/local/bin:$PATH
 
 # mactex
 export PATH=/usr/texbin:$PATH
@@ -254,7 +254,11 @@ then
 fi
 
 # perl
-export XDG_DATA_HOME=/opt/local/share
+# export XDG_DATA_HOME=/opt/local/share
+
+export XDG_DATA_HOME=/usr/local/Cellar/shared-mime-info/0.70/share
+export XDG_DATA_DIRS=/usr/local/Cellar/shared-mime-info/0.70/share
+update-mime-database /usr/local/Cellar/shared-mime-info/0.70/share/mime/
 
 export GISTY_DIR="$HOME/co/gist"
 
@@ -338,3 +342,8 @@ setopt autopushd
 source ~/co/gist/607290/up
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
+
+source $HOME/perl5/perlbrew/etc/bashrc
+
+perlbrew use perl-5.8.8
