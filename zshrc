@@ -343,7 +343,8 @@ source ~/co/gist/607290/up
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
-
 source $HOME/perl5/perlbrew/etc/bashrc
 
 perlbrew use perl-5.8.8
+
+export PERL5LIB=~/perl5/lib
