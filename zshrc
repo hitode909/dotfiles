@@ -209,8 +209,9 @@ fi
 alias sl="screen -ls"
 function s () {
     name=${1:-${PWD##*/}}
-    #echo "\033P\033]0;${name}\007\033\\"
-    __session_name=$name __session_from=$PWD screen -x $name || __session_name=$name __session_from=$PWD screen -r $name || __session_name=$name __session_from=$PWD screen -S $name
+    screen -x $name \
+      || screen -r $name \
+      || __session_name=$name __session_from=$PWD screen -S $name
 }
 
 rpwd () {
