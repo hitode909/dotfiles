@@ -207,10 +207,14 @@ fi
 
 # screen簡単系
 alias sl="screen -ls"
-s () {
+function s () {
     name=${1:-${PWD##*/}}
     #echo "\033P\033]0;${name}\007\033\\"
-    __session_name=$name screen -x $name || __session_name=$name screen -r $name || __session_name=$name screen -S $name
+    __session_name=$name __session_from=$PWD screen -x $name || __session_name=$name __session_from=$PWD screen -r $name || __session_name=$name __session_from=$PWD screen -S $name
+}
+
+rpwd () {
+    path_diff.rb $__session_from $(pwd)
 }
 
 _set_env_git_current_branch() {
@@ -229,10 +233,6 @@ _update_rprompt () {
   RPROMPT="[${USER}@${HOST}:%~]"
 }
 
-preexec () {
-#    osascript -e 'tell application "System Events" to key code 28 using {command down, option down, control down}'
-}
-
 precmd () {
 #     osascript -e 'tell application "System Events" to key code 28 using {command down, option down, control down}'
     _update_rprompt
@@ -241,12 +241,25 @@ precmd () {
     #git_status
 }
 
-chpwd()
+function set_screen_title () {
+  echo -ne "\ek$1\e\\"
+}
+
+function set_screen_title_pwd () {
+  if [ "$TERM" = "screen" ]; then
+    set_screen_title $(rpwd)
+  fi
+}
+
+function chpwd()
 {
   #_set_env_git_current_branch
   #_gprompt
   #git_status
+  set_screen_title_pwd
 }
+
+set_screen_title_pwd
 
 if [ -f ~/.zshrc.`uname` ]
 then
