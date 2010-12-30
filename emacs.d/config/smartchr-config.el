@@ -1,6 +1,7 @@
 ;; smartchr
 (require 'smartchr)
 (global-set-key (kbd "=") (smartchr '(" = " "=" " == " "=")))
+(global-set-key (kbd "J") (smartchr '("J" "->" "J")))
 ; (global-set-key (kbd "!") (smartchr '("!" "!!" " != ")))
 (global-set-key (kbd "<") (smartchr '("<" "<<" " < " " <= ")))
 (global-set-key (kbd "{") (smartchr '("{ `!!' }" "{")))

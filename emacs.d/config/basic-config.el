@@ -397,10 +397,9 @@
 ;; zlc
 (require 'zlc)
 
-;; path
-(setenv "XDG_DATA_HOME" "/opt/local/share")
-(setenv "PATH" (concat "/opt/local/bin:" (getenv "PATH")))
-(setq exec-path (cons "/opt/local/bin" exec-path))
 
 
 (global-set-key [(super m)] 'ns-toggle-fullscreen)
+
+(require 'zizo)
+(global-set-key [(super z)] 'zizo)
