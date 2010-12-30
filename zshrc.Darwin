@@ -1,5 +1,3 @@
-echo "Darwin now"
-
 alias emacs="open -a Emacs"
 
 fmount2() {
