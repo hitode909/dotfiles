@@ -1,7 +1,7 @@
 ;; refe.indexへのパス
-(setq anything-refe-index-file-path "~/co/dotfiles/rubyrefm/bitclust/refe.index")
+(setq anything-refe-index-file-path "~/Dropbox/data/rubyrefm/bitclust/refe.index")
 ;; メモ付き辞書おきば
-(setq anything-refe-private-dict-path "~/co/dotfiles/rubyrefm/mydict") ;最後にスラッシュは付けない
+(setq anything-refe-private-dict-path "~/Dropbox/data/rubyrefm/mydict") ;最後にスラッシュは付けない
 
 (require 'anything)
 
