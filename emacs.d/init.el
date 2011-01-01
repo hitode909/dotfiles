@@ -17,6 +17,7 @@
 (load-file "~/.emacs.d/config/js-config.el")
 ;; (load-file "~/.emacs.d/config/outputz-config.el")
 (load-file "~/.emacs.d/config/ruby-config.el")
+(load-file "~/.emacs.d/config/ruby-refe-config.el")
 (load-file "~/.emacs.d/config/shell-config.el")
 (load-file "~/.emacs.d/config/smartchr-config.el")
 (load-file "~/.emacs.d/config/tex-config.el")

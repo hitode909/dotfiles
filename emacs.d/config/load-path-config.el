@@ -16,6 +16,10 @@
   (setenv "PATH"
           (concat '"/usr/local/bin:" (getenv "PATH")))
 
+  (setq exec-path (cons "/Users/fkd/bin" exec-path))
+  (setenv "PATH"
+          (concat '"/Users/fkd/bin:" (getenv "PATH")))
+
 
 
 
