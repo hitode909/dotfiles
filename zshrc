@@ -211,8 +211,10 @@ function s () {
     name=${1:-${PWD##*/}}
     screen -x $name \
       || screen -r $name \
-      || __session_name=$name __session_from=$PWD screen -S $name
+      || __session_name=$name screen -S $name
 }
+
+export __session_from=$PWD
 
 rpwd () {
     path_diff.rb $__session_from $(pwd)
