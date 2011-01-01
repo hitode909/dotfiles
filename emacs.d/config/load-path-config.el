@@ -32,3 +32,7 @@
 
 (setenv "PATH" (concat "/Users/fkd/perl5/perlbrew/perls/perl-5.8.8/bin:" (getenv "PATH")))
 (setq exec-path (cons "/Users/fkd/perl5/perlbrew/perls/perl-5.8.8/bin" exec-path))
+
+
+(setenv "LANG" "en_US.UTF-8")
+

@@ -1,3 +1,2 @@
 #!/bin/sh
-export LANG=en_US.UTF-8
 ruby -Ke -I ~/Dropbox/data/rubyrefm/bitclust/lib ~/Dropbox/data/rubyrefm/bitclust/bin/refe.rb -d ~/Dropbox/data/rubyrefm/db-1_9_1 $*
