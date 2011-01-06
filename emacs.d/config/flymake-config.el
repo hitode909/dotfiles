@@ -8,6 +8,8 @@
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 
 ;; flymake のエラーメッセージを popup-tip で表示 - とりあえず暇だったし何となく始めたブログ
+
+(when nil
 ;; http://d.hatena.ne.jp/khiker/20100203/popup_flymake
 (require 'popup)
 (defun popup-flymake-display-error ()
@@ -28,6 +30,7 @@
                                                  line-err-info-list))))
           (popup-tip (format "[%s] %s" line text))))
       (setq count (1- count)))))
+)
 
 (add-hook
  'flymake-mode-hook
