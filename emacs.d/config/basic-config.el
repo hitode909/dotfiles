@@ -289,13 +289,11 @@
 (define-key global-map [(C shift b)] 'windmove-left)
 (define-key global-map [(C shift f)] 'windmove-right)
 
-(when nil
 ;; dmacro
 ;; http://pitecan.com/DynamicMacro/
 (defconst *dmacro-key* "\C-t" "dmacro-key")
 (global-set-key *dmacro-key* 'dmacro-exec)
 (autoload 'dmacro-exec "dmacro" nil t)
-)
 
 ;;; undo-tree.el の導入 - とりあえず暇だったし何となく始めたブログ
 ;;; http://d.hatena.ne.jp/khiker/20100123/undo_tree
@@ -403,3 +401,5 @@
 
 (require 'zizo)
 (global-set-key [(super z)] 'zizo)
+
+(setq initial-scratch-message nil)
