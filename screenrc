@@ -14,7 +14,7 @@ bind \^ resize
 vbell off
 
 
-bind j exec | /usr/local/bin/uim-fep -s lastline -S
+bind j exec | uim-fep -s lastline -S
 bind k eval 'exec cat' kill redisplay
 
 
