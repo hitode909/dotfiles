@@ -193,10 +193,16 @@ zstyle ':completion:*:default' menu select=1
 # fi
 
 # set_proxy
-source ~/co/gist/630018/set_proxy
+if [ -f ~/co/gist/630018/set_proxy ]
+then
+    source ~/co/gist/630018/set_proxy
+fi
 
 # pb
-source ~/co/gist/370647/pb
+if [ -f ~/co/gist/370647/pb ]
+then
+    source ~/co/gist/370647/pb
+fi
 
 # load local settings
 if [ -f ~/.zshrc.local ]
@@ -274,7 +280,7 @@ fi
 
 export XDG_DATA_HOME=/usr/local/Cellar/shared-mime-info/0.70/share
 export XDG_DATA_DIRS=/usr/local/Cellar/shared-mime-info/0.70/share
-update-mime-database /usr/local/Cellar/shared-mime-info/0.70/share/mime/
+which update-mime-database >& /dev/null && update-mime-database /usr/local/Cellar/shared-mime-info/0.70/share/mime/
 
 export GISTY_DIR="$HOME/co/gist"
 
@@ -355,12 +361,18 @@ zle -N self-insert url-quote-magic
 setopt autopushd
 
 # up
-source ~/co/gist/607290/up
+if [ -f ~/co/gist/607290/up ]
+then
+    source ~/co/gist/607290/up
+fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
-source $HOME/perl5/perlbrew/etc/bashrc
+if [ -f $HOME/perl5/perlbrew/etc/bashrc ]
+then
+    source $HOME/perl5/perlbrew/etc/bashrc
+fi
 
-perlbrew use perl-5.8.8
+which perlbrew >& /dev/null && perlbrew use perl-5.8.8
 
 export PERL5LIB=~/perl5/lib
