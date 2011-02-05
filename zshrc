@@ -278,10 +278,6 @@ fi
 # perl
 # export XDG_DATA_HOME=/opt/local/share
 
-export XDG_DATA_HOME=/usr/local/Cellar/shared-mime-info/0.70/share
-export XDG_DATA_DIRS=/usr/local/Cellar/shared-mime-info/0.70/share
-which update-mime-database >& /dev/null && update-mime-database /usr/local/Cellar/shared-mime-info/0.70/share/mime/
-
 export GISTY_DIR="$HOME/co/gist"
 
 
