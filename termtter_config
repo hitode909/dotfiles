@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+# vim: filetype=ruby
+
+config.token_file = "~/.termtter/token"
+
+config.confirm = false
+config.plugins.stdout.colors = [0]
+config.plugins.stdout.sweet_color = 0
+
+Termtter::Client.init do |t|
+  t.plug 'irc_gw'
+  t.plug 'user_stream'
+  t.plug 'appendtitle'
+  t.plug 'mongo'
+  t.plug 'im_kayac'
+end
+
+module Termtter::Client
+  register_command(
+    :name => :like,
+    :exec => lambda {|arg|
+      execute("fav #{arg}")
+      execute("rt #{arg}")
+    })
+end
