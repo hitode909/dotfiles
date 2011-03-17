@@ -54,6 +54,7 @@ alias cp="cp -v"
 # alias ruby="ruby -Ku"
 # alias irb="irb -Ku"
 alias o="open ."
+alias perlcode="perldoc -m"
 
 function e()
 {
@@ -149,6 +150,9 @@ zstyle :insert-last-word match \
 bindkey '^]' insert-last-word
 
 zstyle ':completion:*:default' menu select=1
+
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
 
 # screenを使っているとき直前のコマンドをtitleにする
 # http://web.archive.org/web/20060207103240/http://www.nijino.com/ari/diary/?20020614&to=200206141S1
@@ -311,10 +315,26 @@ function u()
 
 function u()
 {
-cd ./$(git rev-parse --show-cdup)
-if [ $# = 1 ]; then
-cd $1
-fi
+    cd ./$(git rev-parse --show-cdup)
+    if [ $# = 1 ]; then
+        cd $1
+    fi
+}
+
+function f()
+{
+    cd $__session_from
+    if [ $# = 1 ]; then
+        cd $1
+    fi
+}
+
+function h()
+{
+    cd
+    if [ $# = 1 ]; then
+        cd $1
+    fi
 }
 
 
