@@ -14,7 +14,7 @@
 (load-file "~/.emacs.d/config/carbon-config.el")
 (load-file "~/.emacs.d/config/perl-config.el")
 (load-file "~/.emacs.d/config/flymake-config.el") ;; XXXXXXXX
-(load-file "~/.emacs.d/site-lisp/flymake-growl.el")
+;; (load-file "~/.emacs.d/site-lisp/flymake-growl.el")
 (load-file "~/.emacs.d/config/js-config.el")
 ;; (load-file "~/.emacs.d/config/outputz-config.el")
 (load-file "~/.emacs.d/config/ruby-config.el")
