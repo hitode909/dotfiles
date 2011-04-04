@@ -392,3 +392,9 @@ fi
 which perlbrew >& /dev/null && perlbrew use perl-5.8.8
 
 export PERL5LIB=~/perl5/lib
+
+# gitの補完切る
+compdef -d _git; compdef -d git
+
+
+[ -e "${HOME}/.ssh/agent-env" ] && . "${HOME}/.ssh/agent-env"
