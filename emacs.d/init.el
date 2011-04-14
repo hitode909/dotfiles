@@ -25,5 +25,7 @@
 (load-file "~/.emacs.d/config/yaml-config.el")
 ;; (load-file "~/.emacs.d/config/rsense-config.el")
 (load-file "~/.emacs.d/config/auto-save-buffers-config.el")
+(load-file "~/.emacs.d/config/dictionary-config.el")
+
 
 (message "hi")
