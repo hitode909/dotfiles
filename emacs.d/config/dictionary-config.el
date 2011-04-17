@@ -9,6 +9,7 @@
   (let ((pt (save-excursion (mouse-set-point last-nonmenu-event)))
         (old-buf (current-buffer))
         (dict-buf (get-buffer-create "*dictionary.app*"))
+        (res-buf (find-file-noselect "~/Dropbox/memo/english.txt"))
         beg end)
     (if (and mark-active
              (<= (region-beginning) pt) (<= pt (region-end)))
@@ -26,6 +27,11 @@
                   nil "*dictionary.app*" t word
                   "Japanese-English" "Japanese" "Japanese Synonyms")
     (setq dict (buffer-string))
+    (set-buffer res-buf)
+    (goto-char (point-max))
+    (insert (concat (current-time-string) "\n" word "\n"))
+    (insert-buffer dict-buf)
+    (save-current-buffer)
     (set-buffer old-buf)
     (when (not (eq (length dict) 0))
       (popup-tip dict :margin t :scroll-bar t) t)
