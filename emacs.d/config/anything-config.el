@@ -104,12 +104,14 @@
 
 (global-set-key (kbd "M-p") 'anything-project)
 
-(require 'anything-git-grep)
-(defun anything-git-grep ()
-  (interactive)
-  (anything-other-buffer 'anything-c-source-git-grep "*anything find-file*"))
+(when (featurep 'magit)
+  (require 'anything-git-grep)
+  (defun anything-git-grep ()
+    (interactive)
+    (anything-other-buffer 'anything-c-source-git-grep "*anything find-file*"))
 
-(global-set-key  [(super o)] 'anything-git-grep)
+  (global-set-key  [(super o)] 'anything-git-grep)
+  )
 
 ;; (define-key global-map [(super t)] 'anything-timers)
 
