@@ -1,0 +1,44 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'gisty'
+
+if ENV['GISTY_DIR']
+  begin
+    @g = Gisty.new ENV['GISTY_DIR']
+  rescue Gisty::UnsetAuthInfoException => e
+    puts 'Error: set your api token.'
+    puts 'see Global Git Config at https://github.com/account'
+    exit
+  end
+else
+  puts "Error: please set ENV['GISTY_DIR']"
+  exit
+end
+
+now = Time.now.to_i
+
+file_png = "/tmp/#{now}.png"
+file_jpg = "/tmp/#{now}.jpg"
+
+# capture
+system "screencapture -i \"#{file_png}\""
+unless File.exist?(file_png)
+  exit
+end
+
+system "convert #{file_png} #{file_jpg}"
+
+# post
+begin
+  url = @g.create file_jpg
+rescue Gisty::InvalidFileException => e
+  puts "Error: invalid file"
+rescue Exception => e
+  puts "Error: #{e}"
+else
+  id = url.split('/').last
+  system "open https://gist.github.com/raw/#{id}/#{now}.jpg" if /darwin/ === RUBY_PLATFORM
+end
+
+File.delete(file_jpg)
+File.delete(file_png)

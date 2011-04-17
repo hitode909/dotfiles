@@ -21,10 +21,11 @@
              (setq cperl-tab-always-indent t)
              (setq cperl-indent-parens-as-block t)
 
-             (require 'auto-complete)
-             (require 'perl-completion)
-             (add-to-list 'ac-sources 'ac-source-perl-completion)
-             (perl-completion-mode t)))
+             ;; (require 'auto-complete)
+             ;; (require 'perl-completion)
+             ;; (add-to-list 'ac-sources 'ac-source-perl-completion)
+             ;; (perl-completion-mode t)
+             ))
 
 ;; perl5lib
 (require 'set-perl5lib-glob-from-git-root)
@@ -59,4 +60,4 @@
 
 (setenv "MODULEBUILDRC" "/Users/fkd/perl5/.modulebuildrc")
 (setenv "PERL_MM_OPT" "INSTALL_BASE=/Users/fkd/perl5")
-(setenv "PERL5LIB" (concat "/Users/fkd/perl5/lib/perl5:/Users/fkd/perl5/lib/perl5/darwin-2level:" (getenv "PERL5LIB")))
+(setenv "PERL5LIB" (concat "/Users/fkd/perl5/lib:/Users/fkd/perl5/lib/perl5:/Users/fkd/perl5/lib/perl5/darwin-2level:" (getenv "PERL5LIB")))

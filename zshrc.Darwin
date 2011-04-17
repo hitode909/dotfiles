@@ -20,4 +20,4 @@ alias less="/usr/share/vim/vim72/macros/less.sh"
 
 export XDG_DATA_HOME=/usr/local/Cellar/shared-mime-info/0.70/share
 export XDG_DATA_DIRS=/usr/local/Cellar/shared-mime-info/0.70/share
-update-mime-database /usr/local/Cellar/shared-mime-info/0.70/share/mime/
+# update-mime-database /usr/local/Cellar/shared-mime-info/0.70/share/mime/

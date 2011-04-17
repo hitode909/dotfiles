@@ -9,7 +9,6 @@
 
 ;; flymake のエラーメッセージを popup-tip で表示 - とりあえず暇だったし何となく始めたブログ
 
-(when nil
 ;; http://d.hatena.ne.jp/khiker/20100203/popup_flymake
 (require 'popup)
 (defun popup-flymake-display-error ()
@@ -30,7 +29,6 @@
                                                  line-err-info-list))))
           (popup-tip (format "[%s] %s" line text))))
       (setq count (1- count)))))
-)
 
 (add-hook
  'flymake-mode-hook
@@ -42,7 +40,6 @@
 (add-hook 'c-mode-hook
           '(lambda ()
              (flymake-mode t)))
-
 
 ;; flymake for perl
 (defvar flymake-perl-err-line-patterns '(("\\(.*\\) at \\([^ \n]+\\) line \\([0-9]+\\)[,.\n]" 2 3 nil 1)))
@@ -70,3 +67,32 @@
   (flymake-mode t))
 
 (add-hook 'cperl-mode-hook '(lambda () (flymake-perl-load)))
+
+
+(defun flymake-simple-generic-init (cmd &optional opts)
+  (let* ((temp-file  (flymake-init-create-temp-buffer-copy
+                      'flymake-create-temp-inplace))
+         (local-file (file-relative-name
+                      temp-file
+                      (file-name-directory buffer-file-name))))
+    (list cmd (append opts (list local-file)))))
+
+;; Makefile が無くてもC/C++のチェック
+(defun flymake-simple-make-or-generic-init (cmd &optional opts)
+  (if (file-exists-p "Makefile")
+      (flymake-simple-make-init)
+    (flymake-simple-generic-init cmd opts)))
+
+(defun flymake-c-init ()
+  (flymake-simple-make-or-generic-init
+   "gcc" '("-Wall" "-Wextra" "-pedantic" "-fsyntax-only")))
+
+(defun flymake-cc-init ()
+  (flymake-simple-make-or-generic-init
+   "g++" '("-Wall" "-Wextra" "-pedantic" "-fsyntax-only")))
+
+(push '("\\.[cC]\\'" flymake-c-init) flymake-allowed-file-name-masks)
+(push '("\\.\\(?:cc\|cpp\|CC\|CPP\\)\\'" flymake-cc-init) flymake-allowed-file-name-masks)
+
+(delete '("\\.html?\\'" flymake-xml-init) flymake-allowed-file-name-masks)
+(delete '("\\.xml\\'" flymake-xml-init) flymake-allowed-file-name-masks)
