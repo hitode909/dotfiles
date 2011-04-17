@@ -314,11 +314,12 @@
     (call-interactively 'grep-find)))
 
 
-(global-unset-key "\C-xvd")
-(require 'magit)
-(global-set-key [(super s)] 'magit-status)
-(global-set-key [(super l)] 'magit-log)
-
+(when (featurep 'magit)
+  (global-unset-key "\C-xvd")
+  (require 'magit)
+  (global-set-key [(super s)] 'magit-status)
+  (global-set-key [(super l)] 'magit-log)
+  )
 
 
 
