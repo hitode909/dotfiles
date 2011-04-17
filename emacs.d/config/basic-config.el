@@ -425,6 +425,19 @@
 (define-key global-map
   "\C-cS" 'scheme-other-window)
 
+;; 1000件覚える
+(setq kill-ring-max 1000)
 
  (autoload 'riece "riece" "Start Riece" t)
 
+(require 'deferred)
+(require 'inertial-scroll)
+(setq inertias-global-minor-mode-map 
+      (inertias-define-keymap
+       '(
+         ("<next>"  . inertias-up)
+         ("<prior>" . inertias-down)
+         ("C-v"     . inertias-up)
+         ("M-v"     . inertias-down)
+         ) inertias-prefix-key))
+(inertias-global-minor-mode 1)
