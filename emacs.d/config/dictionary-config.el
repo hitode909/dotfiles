@@ -1,5 +1,6 @@
-;; Dictionary.app を Emacs から引く
-;; (+ "http://sakito.jp/mac/dictionary.html"
+;; Dictionary.app を Emacs から引いてファイルに書き出す
+;; (+ "http://d.hatena.ne.jp/a666666/20100529/1275138722"
+;;    "http://sakito.jp/mac/dictionary.html"
 ;;    "http://d.hatena.ne.jp/tomoya/20091218/1261138091"
 ;;    "http://d.hatena.ne.jp/tomoya/20100103/1262482873")
 (defvar dict-bin "~/bin/dict.py"
