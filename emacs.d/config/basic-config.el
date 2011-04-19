@@ -177,9 +177,11 @@
 (global-set-key (kbd "\C-cf") 'my-autonamed-txt)
 (global-set-key [(super f)] 'my-autonamed-txt)
 
-
-
-
+(defun my-insert-time ()
+  (interactive)
+  (insert (concat (current-time-string) "\n" ))
+  )
+(global-set-key [(super r)] 'my-insert-time)
 
 ;; recentf
 (setq recentf-auto-cleanup 'never)
