@@ -104,7 +104,7 @@
 
 (global-set-key (kbd "M-p") 'anything-project)
 
-(when (featurep 'magit)
+(when (require 'magit nil t)
   (require 'anything-git-grep)
   (defun anything-git-grep ()
     (interactive)

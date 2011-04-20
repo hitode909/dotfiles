@@ -316,9 +316,9 @@
     (call-interactively 'grep-find)))
 
 
-(when (featurep 'magit)
+
+(when (require 'magit nil t)
   (global-unset-key "\C-xvd")
-  (require 'magit)
   (global-set-key [(super s)] 'magit-status)
   (global-set-key [(super l)] 'magit-log)
   )
