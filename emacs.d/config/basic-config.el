@@ -324,8 +324,9 @@
   )
 
 
+(when nil
 
-(defun scroll-one-line-up ()
+  (defun scroll-one-line-up ()
 "一回に一行のスクロールアップ"
 (interactive)
 (next-line)
@@ -340,6 +341,8 @@
   (scroll-down 1))
 
 (define-key global-map [(super p)] 'scroll-one-line-down)
+
+)
 
 ;; (define-key global-map [(super g)] 'global-outputz-mode)
 
@@ -442,5 +445,7 @@
          ("<prior>" . inertias-down)
          ("C-v"     . inertias-up)
          ("M-v"     . inertias-down)
+         ("s-n"     . inertias-up)
+         ("s-p"     . inertias-down)
          ) inertias-prefix-key))
 (inertias-global-minor-mode 1)
