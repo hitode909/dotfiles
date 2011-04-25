@@ -22,15 +22,17 @@
             (ruby-electric-mode t)
             ))
 ;; ruby-electric-modeにてSKKで日本語入力できるようにする。
+(when nil
 (add-hook 'ruby-mode-hook
           (lambda ()
-            (define-key ruby-mode-map “\C-x\C-j” ’my-ruby-skk)
-            (define-key ruby-mode-map “\C-xj” ’my-ruby-skk)
+            (define-key ruby-mode-map “\C-x\C-j” 'my-ruby-skk)
+            (define-key ruby-mode-map “\C-xj” 'my-ruby-skk)
             (defun my-ruby-skk ()
               (interactive)
               (if (skk-mode)
                   (ruby-electric-mode t)
                 (ruby-electric-mode nil)))))
+)
 
 (autoload 'rubydb "rubydb3x"
   "run rubydb on program file in buffer *gud-file*.
