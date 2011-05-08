@@ -61,7 +61,7 @@
   "coffee-mode-hook"
  (set (make-local-variable 'tab-width) 2)
  (setq coffee-cleanup-whitespace nil)
- (define-key coffee-mode-map [(meta R)] 'coffee-compile-region)
+ (define-key coffee-mode-map [(meta R)] 'coffee-compile-buffer)
  )
 
 (add-hook 'coffee-mode-hook
