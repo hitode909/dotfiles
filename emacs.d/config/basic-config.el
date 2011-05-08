@@ -463,6 +463,7 @@
 
 
 (require 'shadow)
+(add-hook 'find-file-hooks 'shadow-on-find-file)
 
 (global-auto-revert-mode 1)
 
