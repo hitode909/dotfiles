@@ -449,3 +449,22 @@
          ("s-p"     . inertias-down)
          ) inertias-prefix-key))
 (inertias-global-minor-mode 1)
+
+
+(defun google (begin end &optional arg)
+  (interactive "r\nP")
+  (let (
+        (str (buffer-substring-no-properties begin end))
+        )
+    (browse-url (concat "http://www.google.co.jp/search?q=" str))))
+
+
+(require 'shadow)
+(add-hook 'find-file-hooks 'shadow-on-find-file)
+(add-hook 'shadow-find-unshadow-hook
+          (lambda () (auto-revert-mode 1)))
+
+(setq shadow-haunting-command-builder
+      (lambda (command shadowed-command shadowed unshadowed)
+        (format "(%s | %s) > %s 2> %s.err"
+                shadowed-command command unshadowed unshadowed)))
