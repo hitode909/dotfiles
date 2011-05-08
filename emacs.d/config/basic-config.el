@@ -467,3 +467,10 @@
 
 (global-auto-revert-mode 1)
 
+
+(setq shadow-haunting-command-builder
+      (lambda (command shadowed-command shadowed unshadowed)
+        (format "(%s | %s) > %s 2> %s.err"
+                shadowed-command command unshadowed unshadowed)))
+
+
