@@ -121,14 +121,15 @@
 ;; (= emacs-major-version 22)
 (global-set-key "\C-x\C-r" 'revert-buffer)
 
+(require 'cute-cursor)
+(cute-cursor t)
+(setq cute-cursor-interval 1.0)
+(setq cute-cursor-colors '("purple" "orange"))
 
-(when nil
-  (require 'cute-cursor)
-  (cute-cursor t)
-
-  (require 'cute-region)
-  (cute-region t)
-)
+(require 'cute-region)
+(cute-region t)
+(setq cute-region-interval 1.0)
+(setq cute-region-colors '("FloralWhite" "Azure"))
 
 (require 'auto-install)
 
