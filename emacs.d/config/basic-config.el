@@ -462,4 +462,5 @@
 
 (require 'shadow)
 
+(global-auto-revert-mode 1)
 
