@@ -1,0 +1,9 @@
+[submodule "emacs.d/site-lisp/shadow"]
+	path = emacs.d/site-lisp/shadow
+	url = https://github.com/mooz/shadow.el.git
+[submodule "emacs.d/site-lisp/js2-mode"]
+	path = emacs.d/site-lisp/js2-mode
+	url = https://github.com/mooz/js2-mode.git
+[submodule "emacs.d/site-lisp/coffee-mode"]
+	path = emacs.d/site-lisp/coffee-mode
+	url = git://github.com/defunkt/coffee-mode.git
