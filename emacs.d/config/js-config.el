@@ -54,3 +54,17 @@
         (append '(("\\.as$" . actionscript-mode))
                 auto-mode-alist))
   )
+
+
+(require 'coffee-mode)
+(defun coffee-custom ()
+  "coffee-mode-hook"
+ (set (make-local-variable 'tab-width) 2)
+ (setq coffee-cleanup-whitespace nil)
+ (define-key coffee-mode-map [(meta R)] 'coffee-compile-region)
+ )
+
+(add-hook 'coffee-mode-hook
+  '(lambda() (coffee-custom)))
+
+(add-to-list 'auto-mode-alist '("\\.js.shd$" . coffee-mode))
