@@ -116,3 +116,11 @@
 
 ;; (define-key global-map [(super t)] 'anything-timers)
 
+
+
+(require 'anything-rdefs)
+
+(setq ar:command "~/bin/rdefs.rb")
+(add-hook 'ruby-mode-hook
+  (lambda ()
+    (define-key ruby-mode-map [(meta i)] 'anything-rdefs)))
