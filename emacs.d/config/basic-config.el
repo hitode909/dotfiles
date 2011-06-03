@@ -354,6 +354,15 @@
   (interactive)
   (byte-recompile-directory "~/.emacs.d/site-lisp/" nil))
 
+(defun my-perl5 ()
+  "perl5 setします"
+  (interactive)
+  (set-perl5lib-glob-from-git-root ".")
+  (set-perl5lib-glob-from-git-root "t")
+  (set-perl5lib-glob-from-git-root "lib")
+  (set-perl5lib-glob-from-git-root "t/lib")
+  (set-perl5lib-glob-from-git-root "modules/*/lib")
+  )
 
 ;;
 ;; open file as root
@@ -409,7 +418,6 @@
 (global-set-key [(super m)] 'ns-toggle-fullscreen)
 
 (require 'zizo)
-(global-set-key [(super z)] 'zizo)
 
 (setq initial-scratch-message nil)
 
@@ -474,3 +482,18 @@
                 shadowed-command command unshadowed unshadowed)))
 
 
+
+(defface hlline-face
+  '((((class color)
+      (background dark))
+     (:background "gray"))
+    (((class color)
+      (background light))
+     (:background "rgb:dd/dd/dd"))
+    (t
+     ()))
+  "*Face used by hl-line.")
+(setq hl-line-face 'hlline-face)
+; (setq hl-line-face 'underline) ; 下線
+
+(global-hl-line-mode t)

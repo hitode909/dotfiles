@@ -32,15 +32,15 @@
 (setq anything-sources (list 
                              ;anything-c-source-project
                              ;anything-c-source-imenu
-                             anything-c-source-bookmarks
                              ;; anything-c-source-file-name-history
                              ;; anything-c-source-projects-history ;; I need!!!!!
                              ;; anything-c-source-mac-spotlight
+                             anything-c-source-buffers
+                             anything-c-source-recentf
+                             anything-c-source-bookmarks
                              nym:anything-find-file   ;; cool
                              ;;anything-c-source-complete-ruby-all
                              ;;anything-c-source-occur-by-moccur
-                             anything-c-source-recentf
-                             anything-c-source-buffers
                              anything-c-source-files-in-current-dir
                              ;; anything-c-source-emacs-functions
                              ;; anything-c-source-google-suggest
