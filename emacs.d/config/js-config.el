@@ -62,6 +62,11 @@
  (set (make-local-variable 'tab-width) 2)
  (setq coffee-cleanup-whitespace nil)
  (define-key coffee-mode-map [(meta R)] 'coffee-compile-file)
+
+ (add-hook 'after-save-hook
+           '(lambda ()
+              (when (string-match "\.coffee<" (buffer-name)) ; ~~~.coffee<>
+                (coffee-compile-file))))
  )
 
 (add-hook 'coffee-mode-hook
