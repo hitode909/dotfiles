@@ -58,6 +58,7 @@ alias cp="cp -v"
 # alias irb="irb -Ku"
 alias o="open ."
 alias perlcode="perldoc -m"
+alias killf="kill -9"
 
 function e()
 {
