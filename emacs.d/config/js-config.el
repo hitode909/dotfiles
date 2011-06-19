@@ -65,7 +65,7 @@
 
  (add-hook 'after-save-hook
            '(lambda ()
-              (when (string-match "\.coffeeg" (buffer-name)) ; ~~~.coffee<>
+              (when (string-match "\.coffee" (buffer-name)) ; ~~~.coffee<>
                 (coffee-compile-file))))
  )
 
