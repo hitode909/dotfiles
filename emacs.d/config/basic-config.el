@@ -24,8 +24,10 @@
 ; (partial-completion-mode t)
 
 ;; カーソル
-(blink-cursor-mode 1)
 (set-cursor-color "cyan")
+(setq blink-cursor-interval 0.05)
+(setq blink-cursor-delay 0.05)
+(blink-cursor-mode 1)
 
 ;; リージョンをC-hで削除
 (delete-selection-mode 1)
