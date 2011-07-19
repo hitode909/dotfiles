@@ -24,7 +24,7 @@
 ; (partial-completion-mode t)
 
 ;; カーソル
-(set-cursor-color "cyan")
+(set-cursor-color "orange")
 (setq blink-cursor-interval 0.05)
 (setq blink-cursor-delay 0.05)
 (blink-cursor-mode 1)
@@ -83,7 +83,7 @@
 (setq display-time-day-and-date t)
 (setq display-time-string-forms
       '(month "/" day " " 24-hours ":" minutes " "))
-(display-time)
+(display-time-mode 1)
 
 ;;; カーソルがある行にアンダーラインを表示
 ;;(global-hl-line-mode)
@@ -501,3 +501,5 @@
 ; (setq hl-line-face 'underline) ; 下線
 
 (global-hl-line-mode t)
+
+(setq gc-cons-threshold 80960000)        ; 40M(default: 400K)

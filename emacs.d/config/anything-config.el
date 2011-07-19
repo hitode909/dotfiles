@@ -99,6 +99,10 @@
   ;;   (drill-instructor t)
 
 
+(defun anything-man-pages ()
+  (interactive)
+  (anything-other-buffer 'anything-c-source-man-pages "*anything manual*"))
+
 (defun anything-find-file ()
   (interactive)
   (anything-other-buffer 'nym:anything-find-file "*anything find-file*"))
@@ -124,7 +128,6 @@
 (add-hook 'ruby-mode-hook
   (lambda ()
     (define-key ruby-mode-map [(meta i)] 'anything-rdefs)))
-
 
 ;; https://gist.github.com/1026506
 
@@ -154,3 +157,13 @@
                 (not (buffer-file-name (get-buffer i))))
         collect (propertize i
                             'face anything-c-buffers-face3)))
+
+
+(when (eq system-type 'darwin)
+  (require 'anything-mac-itunes)
+  (global-set-key (kbd "C-c m") 'anything-mac-itunes)
+  (global-set-key (kbd "C-c b") 'anything-mac-itunes-back-track)
+  (global-set-key (kbd "C-c n") 'anything-mac-itunes-next-track)
+  (global-set-key (kbd "C-c p") 'anything-mac-itunes-playpause-track)
+  (global-set-key (kbd "C-c c") 'anything-mac-itunes-show-current-track-info)
+  )
