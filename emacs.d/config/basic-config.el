@@ -358,15 +358,6 @@
   (interactive)
   (byte-recompile-directory "~/.emacs.d/site-lisp/" nil))
 
-(defun my-perl5 ()
-  "perl5 setします"
-  (interactive)
-  (set-perl5lib-glob-from-git-root ".")
-  (set-perl5lib-glob-from-git-root "t")
-  (set-perl5lib-glob-from-git-root "lib")
-  (set-perl5lib-glob-from-git-root "t/lib")
-  (set-perl5lib-glob-from-git-root "modules/*/lib")
-  )
 
 ;;
 ;; open file as root

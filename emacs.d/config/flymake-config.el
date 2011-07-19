@@ -54,7 +54,7 @@
          (local-file (file-relative-name
                       temp-file
                       (file-name-directory buffer-file-name))))
-    (list "perl" (list "-wc" local-file))))
+    (list (expand-file-name "~/perl5/perlbrew/perls/current/bin/perl") (list "-MProject::Libs" "-wc" local-file))))
 
 (defun flymake-perl-load ()
   (interactive)
