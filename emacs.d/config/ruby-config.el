@@ -95,9 +95,6 @@ and source-file directory for your debugger." t)
 
 ;;;;  flymake for ruby
 (require 'flymake)
-;; I don't like the default colors :)
-(set-face-background 'flymake-errline "sky")
-(set-face-background 'flymake-warnline "yellow")
 ;; Invoke ruby with '-c' to get syntax checking
 (defun flymake-ruby-init ()
   (let* ((temp-file   (flymake-init-create-temp-buffer-copy

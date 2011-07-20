@@ -125,3 +125,18 @@
   (flymake-mode t))
 
 (add-hook 'coffee-mode-hook 'flymake-coffeescript-load)
+
+;既存のフェイスを無効にする，下線引く
+(set-face-background 'flymake-errline nil)
+(set-face-foreground 'flymake-errline nil)
+(set-face-background 'flymake-warnline nil)
+(set-face-foreground 'flymake-warnline nil)
+
+(custom-set-faces
+ '(flymake-errline ((((class color)) (:underline "red"))))
+ '(flymake-warnline ((((class color)) (:underline "yellow")))))
+
+;; (set-face-background 'flymake-errline "orange red")
+;; (set-face-foreground 'flymake-errline "black")
+;; (set-face-background 'flymake-warnline "yellow")
+;; (set-face-foreground 'flymake-warnline "black")
