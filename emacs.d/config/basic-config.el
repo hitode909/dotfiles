@@ -42,6 +42,11 @@
 (require 'mcomplete)
 (turn-on-mcomplete-mode)
 
+;; mcomplete 色ましに
+(set-face-foreground 'mcomplete-prefix-method-fixed-part-face nil)
+(set-face-foreground 'mcomplete-prefix-method-alternative-part-face nil)
+(set-face-foreground 'mcomplete-substr-method-alternative-part-face nil)
+(set-face-foreground 'mcomplete-substr-method-fixed-part-face nil)
 
 ;; regionに色を付ける
 (transient-mark-mode t)
@@ -494,3 +499,7 @@
 (global-hl-line-mode t)
 
 (setq gc-cons-threshold 80960000)        ; 40M(default: 400K)
+
+
+;; dropで開く
+(define-key global-map [ns-drag-file] 'ns-find-file)

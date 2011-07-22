@@ -33,9 +33,9 @@
 (add-hook
  'flymake-mode-hook
  '(lambda ()
-    (local-set-key (kbd "C-c n") 'flymake-goto-next-error)
-    (local-set-key (kbd "C-c p") 'flymake-goto-prev-error)
-    (local-set-key (kbd "C-c e") 'popup-flymake-display-error)))
+    (local-set-key [(super e)] 'flymake-goto-next-error)
+    ;; (local-set-key (kbd "C-c p") 'flymake-goto-prev-error)
+    (local-set-key [(super E)] 'popup-flymake-display-error)))
 
 (add-hook 'c-mode-hook
           '(lambda ()

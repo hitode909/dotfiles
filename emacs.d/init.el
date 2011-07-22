@@ -13,6 +13,8 @@
 ;; (load-file "~/.emacs.d/config/auto-revert-mode-config.el")
 (load-file "~/.emacs.d/config/carbon-config.el")
 (load-file "~/.emacs.d/config/perl-config.el")
+(load-file "~/.emacs.d/config/html-config.el")
+(load-file "~/.emacs.d/config/css-config.el")
 (load-file "~/.emacs.d/config/flymake-config.el") ;; XXXXXXXX
 ;; (load-file "~/.emacs.d/site-lisp/flymake-growl.el")
 (load-file "~/.emacs.d/config/js-config.el")
