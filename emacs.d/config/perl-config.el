@@ -23,7 +23,7 @@
              ;; (add-to-list 'ac-sources 'ac-source-perl-completion)
              ;; (perl-completion-mode t)
 
-             (global-set-key [(super t)] 'my-run-test)
+             (define-key cperl-mode-map [(super t)] 'my-run-test)
              ))
 
 (setq-default indent-tabs-mode nil)
