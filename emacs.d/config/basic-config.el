@@ -363,6 +363,10 @@
   (interactive)
   (byte-recompile-directory "~/.emacs.d/site-lisp/" nil))
 
+(defun my-open-current-file ()
+  (interactive)
+  (shell-command (format "open %s" (buffer-file-name (current-buffer)))))
+
 
 ;;
 ;; open file as root
