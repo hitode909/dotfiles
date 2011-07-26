@@ -76,3 +76,4 @@
 
 
 (setq coffee-args-compile '("-cb"))
+(setq ac-modes (cons 'coffee-mode ac-modes))
