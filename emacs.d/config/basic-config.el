@@ -25,8 +25,8 @@
 
 ;; カーソル
 (set-cursor-color "orange")
-(setq blink-cursor-interval 0.05)
-(setq blink-cursor-delay 0.05)
+(setq blink-cursor-interval 0.1)
+(setq blink-cursor-delay 1.0)
 (blink-cursor-mode 1)
 
 ;; リージョンをC-hで削除
@@ -493,7 +493,7 @@
      (:background "gray"))
     (((class color)
       (background light))
-     (:background "rgb:dd/dd/dd"))
+     (:background "rgb:cc/dd/ff"))
     (t
      ()))
   "*Face used by hl-line.")
