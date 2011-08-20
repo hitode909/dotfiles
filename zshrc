@@ -393,7 +393,7 @@ then
     source $HOME/perl5/perlbrew/etc/bashrc
 fi
 
-which perlbrew >& /dev/null && perlbrew use perl-5.8.8
+which perlbrew >& /dev/null && perlbrew use perl-5.8.9
 
 export PERL5LIB=~/perl5/lib
 

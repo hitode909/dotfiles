@@ -18,6 +18,9 @@ export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
 
 alias less="/usr/share/vim/vim7*/macros/less.sh"
 
-export XDG_DATA_HOME=/usr/local/Cellar/shared-mime-info/0.70/share
-export XDG_DATA_DIRS=/usr/local/Cellar/shared-mime-info/0.70/share
-# update-mime-database /usr/local/Cellar/shared-mime-info/0.70/share/mime/
+export XDG_DATA_HOME=/usr/local/Cellar/shared-mime-info/0.90/share
+export XDG_DATA_DIRS=/usr/local/Cellar/shared-mime-info/0.90/share
+# update-mime-database /usr/local/Cellar/shared-mime-info/0.90/share/mime/
+
+export PATH=/usr/local/mysql/bin:$PATH
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib
