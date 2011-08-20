@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+require 'tempfile'
+
+t = Tempfile.new('open')
+t.write ARGF.read
+t.close
+
+system 'open', '-a', 'Google Chrome.app', t.path
+
+sleep 1
