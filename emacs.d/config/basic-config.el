@@ -507,3 +507,10 @@
 
 ;; dropで開く
 (define-key global-map [ns-drag-file] 'ns-find-file)
+
+
+;; うっとおしかった
+;; (require 'vline)
+;; (require 'col-highlight)
+;; (column-highlight-mode 1)
+
