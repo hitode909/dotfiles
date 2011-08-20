@@ -167,3 +167,9 @@
   (global-set-key (kbd "C-c p") 'anything-mac-itunes-playpause-track)
   (global-set-key (kbd "C-c c") 'anything-mac-itunes-show-current-track-info)
   )
+
+
+(when (require 'popwin nil t)
+  (setq anything-samewindow nil)
+  (push '("*anything*" :height 40) popwin:special-display-config)
+  )

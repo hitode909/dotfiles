@@ -514,3 +514,6 @@
 ;; (require 'col-highlight)
 ;; (column-highlight-mode 1)
 
+
+(require 'popwin)
+(setq display-buffer-function 'popwin:display-buffer)
