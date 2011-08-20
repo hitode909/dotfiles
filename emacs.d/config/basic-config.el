@@ -517,3 +517,7 @@
 
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
+
+
+;; (require 'yascroll)
+;; (global-yascroll-bar-mode 1)
