@@ -15,9 +15,10 @@
 
 
 
-;; path
-(setenv "XDG_DATA_HOME" "usr/local/Cellar/shared-mime-info/0.70/share")
-(setenv "XDG_DIRS" "usr/local/Cellar/shared-mime-info/0.70/share")
+(setenv "XDG_DATA_HOME" "/usr/local/Cellar/shared-mime-info/0.70/share")
+(setenv "XDG_DIRS" "/usr/local/Cellar/shared-mime-info/0.70/share")
+
+(setenv "DYLD_LIBRARY_PATH" "/usr/local/mysql/lib")
 
 (setenv "PATH" (concat '"/usr/local/bin:" (getenv "PATH")))
 (setq exec-path (cons "/usr/local/bin" exec-path))
