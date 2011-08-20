@@ -25,7 +25,7 @@
 
 ;; カーソル
 (set-cursor-color "orange")
-(setq blink-cursor-interval 0.1)
+(setq blink-cursor-interval 0.05)
 (setq blink-cursor-delay 1.0)
 (blink-cursor-mode 1)
 
