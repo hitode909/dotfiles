@@ -521,3 +521,9 @@
 
 ;; (require 'yascroll)
 ;; (global-yascroll-bar-mode 1)
+
+(require 'popup-hatena-profile-image)
+(global-set-key [(super i)] 'popup-hatena-profile-image)
+
+;; compile scroll
+(setq compilation-scroll-output t)
