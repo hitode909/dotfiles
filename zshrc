@@ -404,3 +404,13 @@ export PERL5LIB=~/perl5/lib
 zstyle ':completion:*' use-cache true
 
 [ -e "${HOME}/.ssh/agent-env" ] && . "${HOME}/.ssh/agent-env"
+
+
+function hatena () {
+    if pwd | grep "Hatena" > /dev/null; then
+        echo "～ ☆をくれた人に「カラースター」でお返ししよう！ ～"
+        rvm use ruby-1.8.7
+    fi
+}
+
+hatena
