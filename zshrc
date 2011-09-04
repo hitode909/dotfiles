@@ -398,7 +398,7 @@ which perlbrew >& /dev/null && perlbrew use perl-5.8.9
 export PERL5LIB=~/perl5/lib
 
 # gitの補完切る
-# compdef -d _git; compdef -d git
+compdef -d _git; compdef -d git
 
 # 補完キャッシュ
 zstyle ':completion:*' use-cache true
