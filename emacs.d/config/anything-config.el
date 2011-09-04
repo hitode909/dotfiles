@@ -171,5 +171,5 @@
 
 (when (require 'popwin nil t)
   (setq anything-samewindow nil)
-  (push '("*anything*" :height 40) popwin:special-display-config)
+  ;; (push '("*anything*" :height 40) popwin:special-display-config)
   )
