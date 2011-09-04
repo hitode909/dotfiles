@@ -1,0 +1,9 @@
+#! /usr/bin/env ruby
+# -*- coding: utf-8 -*-
+input = ARGF.read
+
+if input =~ /、|。/
+  puts input.gsub(/、/, '，').gsub(/。/, '．')
+else
+  puts input.gsub(/，/, '、').gsub(/．/, '。')
+end
