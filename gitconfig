@@ -2,7 +2,7 @@
 	email = hitode909@gmail.com
 	name = hitode909
 [core]
-	excludesfile = /Users/fkd/.gitignore
+	excludesfile = ~/.gitignore
 [github]
 	user = hitode909
 [alias]
