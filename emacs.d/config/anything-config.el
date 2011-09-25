@@ -32,6 +32,7 @@
 
 
 (global-set-key (kbd "C-;") 'anything)
+(global-set-key (kbd "s-;") 'anything-resume)
 (setq anything-sources (list 
                              ;anything-c-source-project
                              ;anything-c-source-imenu
