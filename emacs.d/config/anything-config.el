@@ -177,4 +177,5 @@
   (setq anything-samewindow nil)
   (push '("anything" :regexp t :height 0.5) popwin:special-display-config)
   (push '("*magit-edit-log*" :height 0.5) popwin:special-display-config)
+  (push '("*Backtrace*" :noselect t :height 0.5) popwin:special-display-config)
   )
