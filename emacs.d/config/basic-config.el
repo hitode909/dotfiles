@@ -529,3 +529,14 @@
 
 ;; compile scroll
 (setq compilation-scroll-output t)
+
+(require 'clipboard-to-kill-ring)
+(clipboard-to-kill-ring t)
+
+;; kill-ring に同じ内容の文字列を複数入れない
+(defadvice kill-new (before ys:no-kill-new-duplicates activate)
+  (setq kill-ring (delete (ad-get-arg 0) kill-ring)))
+
+
+(setq save-kill-file-name "~/Dropbox/config/kill-ring-saved.el")
+(require 'savekill)
