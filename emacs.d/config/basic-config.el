@@ -189,7 +189,7 @@
 
 (defun my-insert-time ()
   (interactive)
-  (insert (concat (current-time-string) "\n" ))
+  (insert (concat "* " (current-time-string) "\n" ))
   )
 (global-set-key [(super r)] 'my-insert-time)
 
