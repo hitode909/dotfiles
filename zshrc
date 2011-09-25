@@ -414,3 +414,20 @@ function hatena () {
 }
 
 hatena
+
+###begin-jump-bash_profile
+#
+# Installation:
+# jump >> ~/.bash_profile && source ~/.bash_profile
+#
+
+function jump {
+  local newDir=$(JUMPPROFILE=1 command jump "$@");
+  cd "$newDir";
+}
+alias j="jump -a"
+
+###end-jump-bash_profile
+
+
+export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
