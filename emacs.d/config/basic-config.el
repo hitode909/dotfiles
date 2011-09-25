@@ -540,3 +540,7 @@
 
 (setq save-kill-file-name "~/Dropbox/config/kill-ring-saved.el")
 (require 'savekill)
+
+
+;; window分割しない
+(setq pop-up-windows nil)
