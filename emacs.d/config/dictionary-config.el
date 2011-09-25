@@ -3,8 +3,13 @@
 ;;    "http://sakito.jp/mac/dictionary.html"
 ;;    "http://d.hatena.ne.jp/tomoya/20091218/1261138091"
 ;;    "http://d.hatena.ne.jp/tomoya/20100103/1262482873")
-(defvar dict-bin "~/bin/dict.py"
+
+;; (defvar dict-bin "~/bin/dict.py"
+;;   "dict 実行ファイルのパス")
+(defvar dict-bin "~/bin/dict"
   "dict 実行ファイルのパス")
+
+
 
 ;; (defvar dict-log-file "~/Dropbox/memo/english.txt"
 ;;   "dict ログを書き出すファイル")
