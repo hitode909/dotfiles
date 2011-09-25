@@ -18,6 +18,9 @@
 (setq anything-idle-delay 0)
 (setq anything-quick-update t)
 
+(setq anything-kill-ring-threshold 0)
+
+
 
 ;;; キーバインドの割当(好みに合わせて設定してください)
 (global-set-key (kbd "C-o") 'anything-c-moccur-occur-by-moccur) ;バッファ内検索
