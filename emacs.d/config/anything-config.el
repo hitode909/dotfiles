@@ -180,10 +180,3 @@
   (push '("*Backtrace*" :noselect t :height 0.5) popwin:special-display-config)
   (push '("*undo-tree*" :height 0.5) popwin:special-display-config)
   )
-
-
-(defun anything-emacs-commands ()
-  (interactive)
-  (anything-other-buffer 'anything-c-source-emacs-commands "*anything emacs-commands*"))
-
-(global-set-key "\M-x" 'anything-emacs-commands)
