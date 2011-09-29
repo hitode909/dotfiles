@@ -258,6 +258,13 @@ precmd () {
     #git_status
 }
 
+preexec() {
+    # wget "http://bijo-linux.com/girls_images/$(echo $1 | cut -d ' ' -f 1).jpg" >& /dev/null
+    # man $(echo $1 | cut -d ' ' -f 1) | echo
+    # qlmanage -p "$(echo $1 | cut -d ' ' -f 1).jpg"
+    # open "http://bijo-linux.com/girls/$(echo $1 | cut -d ' ' -f 1)/"
+}
+
 function set_screen_title () {
   echo -ne "\ek$1\e\\"
 }
