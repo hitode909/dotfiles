@@ -85,7 +85,7 @@ and source-file directory for your debugger." t)
     )
   (add-hook 'ruby-mode-hook 'ruby-mode-hook-rcodetools)
 )
-(require 'anything-rcodetools)
+;; (require 'anything-rcodetools)
 ;; Command to get all RI entries.
 ; (setq rct-get-all-methods-command "PAGER=cat fri -l")
 (setq rct-get-all-methods-command "refe -l")
