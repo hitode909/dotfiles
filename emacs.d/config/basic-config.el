@@ -2,6 +2,9 @@
 ;; default encodingをutf-8に変更
 (set-default-coding-systems 'utf-8)
 
+;; 日本語
+(setq current-language-environment "Japanese")
+
 ;; status-barにカーソルのcolumn表示(4,29とか)
 (column-number-mode t)
 
