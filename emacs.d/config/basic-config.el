@@ -144,6 +144,7 @@
   )
 
 (require 'auto-install)
+(auto-install-update-emacswiki-package-name t)
 
 ; (require 'anything-timers)
 
