@@ -5,6 +5,13 @@
       (setq load-path (cons my-lisp-dir load-path))
       (normal-top-level-add-subdirs-to-load-path)))
 
+;; ~/.emacs.d/site-lisp/以下をload-pathに追加
+(if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+    (let* ((my-lisp-dir "~/.emacs.d/auto-install/")
+           (default-directory my-lisp-dir))
+      (setq load-path (cons my-lisp-dir load-path))
+      (normal-top-level-add-subdirs-to-load-path)))
+
 ;; Dropboxにプライベートな設定を置いとける
 (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
     (let* ((my-lisp-dir "~/Dropbox/dotfiles/emacs.d/site-lisp/")
