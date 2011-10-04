@@ -1,5 +1,7 @@
 (require 'anything-startup)
 
+(require 'anything-kyr-config)
+
 (defun my-anything ()
   (interactive)
   (anything-other-buffer
@@ -7,6 +9,7 @@
      anything-c-source-ffap-guesser
      anything-c-source-buffers+
      anything-c-source-recentf
+     anything-c-source-kyr
      anything-c-source-bookmarks
      anything-c-source-file-cache
      anything-c-source-filelist
@@ -93,6 +96,17 @@
   (push '("*undo-tree*" :height 0.5) popwin:special-display-config)
   (push '("*Shell Command Output*" :noselect t :height 0.5) popwin:special-display-config)
   )
+
+(when (require 'magit nil t)
+  (require 'anything-git-grep)
+  (defun anything-git-grep ()
+    (interactive)
+    (anything-other-buffer 'anything-c-source-git-grep "*anything find-file*"))
+
+  (global-set-key  [(super o)] 'anything-git-grep)
+  )
+
+
 
 
 ;; -------------------------old -------------------------

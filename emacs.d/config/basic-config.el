@@ -554,6 +554,12 @@
 
 
 
+(require 'shell-command)
+(shell-command-completion-mode)
+
+(require 'shell-history)
+(define-key shell-mode-map "\M-m" 'shell-add-to-history)
+
 
 ;; --------- タイマー系 選択時にだけチェックするように -------------
 ;; ここでやるの見苦しいからアドバイスで処理したい
@@ -628,3 +634,4 @@ This is an internal function used by Auto-Revert Mode."
 	(setq flymake-last-change-time nil)
 	(flymake-log 3 "starting syntax check as more than 1 second passed since last change")
 	(flymake-start-syntax-check)))))
+
