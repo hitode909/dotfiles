@@ -107,6 +107,31 @@
   )
 
 
+;; https://gist.github.com/1026506
+(anything-c-arrange-type-attribute 'buffer
+  '((candidate-transformer REST
+                           anything-c-highlight-buffers)
+    (display-to-real anything-my-get-buffer REST)))
+(defun anything-my-get-buffer (buffer-or-filename)
+  (if (bufferp buffer-or-filename)
+      buffer-or-filename
+    (get-file-buffer buffer-or-filename)))
+;; override anything-config.el
+(defun anything-c-highlight-buffers (buffers)
+  (require 'dired)
+  (loop for i in buffers
+        if (rassoc (get-buffer i) dired-buffers)
+        collect (propertize i
+                            'face anything-c-buffers-face1
+                            'help-echo (car (rassoc (get-buffer i) dired-buffers)))
+        if (buffer-file-name (get-buffer i))
+        collect (propertize (buffer-file-name (get-buffer i))
+                            'face anything-c-buffers-face2
+                            'help-echo (buffer-file-name (get-buffer i)))
+        if (and (not (rassoc (get-buffer i) dired-buffers))
+                (not (buffer-file-name (get-buffer i))))
+        collect (propertize i
+                            'face anything-c-buffers-face3)))
 
 
 ;; -------------------------old -------------------------
