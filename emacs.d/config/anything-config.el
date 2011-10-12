@@ -135,6 +135,14 @@
                             'face anything-c-buffers-face3)))
 
 
+(defun anything-google ()
+  (interactive)
+  (anything-other-buffer 'anything-c-source-google-suggest "*anything google-suggest*"))
+
+  (global-set-key  [(super g)] 'anything-google)
+
+
+
 ;; -------------------------old -------------------------
 (when nil
 
