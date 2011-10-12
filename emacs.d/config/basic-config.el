@@ -337,6 +337,9 @@
 
 
 (when (require 'magit nil t)
+  (defun magit-save-some-buffers (&optional msg pred)
+    (message "magit-save-some-buffers")
+    )
   (global-unset-key "\C-xvd")
   (global-set-key [(super s)] 'magit-status)
   (global-set-key [(super l)] 'magit-log)
