@@ -15,6 +15,7 @@
      anything-c-source-filelist
      anything-c-source-emacs-commands
      anything-c-source-mac-spotlight
+     anything-c-source-emacs-functions
      )
    "*anything file list*"))
 
