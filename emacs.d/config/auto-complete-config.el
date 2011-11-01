@@ -53,3 +53,31 @@
 
 ;; キーは好きなのを割り当てて下さい
 (global-set-key (kbd "M-h") 'ac-complete-look)
+
+
+;; -------------
+;;補完候補としたい辞書ファイルの場所を指定します。
+(setq ac-skk-jisyo-file "~/co/dotfiles/emacs.d/etc/skk/SKK-JISYO.L")
+;;補完候補生成に必要な中間ファイルを置く場所を指定します。
+(setq ac-skk-alist-file "~/co/dotfiles/emacs.d/etc/ac-skk-alist.el")
+(require 'ac-ja)
+(setq ac-sources (append ac-sources '(ac-source-dabbrev-ja)))
+(setq ac-sources (append ac-sources '(ac-source-skk)))
+
+;; 変換後になんとか
+(eval-after-load "skk"
+  '(progn
+     (defadvice skk-kakutei (after ad-skk-kakutei last)
+       "skk-kakuteiの後にatuo-complete-modeによる補完を実行するadvice"
+       (unless (minibufferp)
+         (ac-start)))))
+
+(add-hook 'skk-mode-hook
+          (lambda ()
+            "skk-kakuteiのadviceを活性化"
+            (interactive)
+            (ad-activate 'skk-kakutei)))
+
+(defadvice skk-mode-exit (before ad-skk-mode-exit last)
+       "skk-modeから抜ける時にskk-kakuteiのadviceを不活性化。"
+       (ad-deactivate 'skk-kakutei))
