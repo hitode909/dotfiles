@@ -200,6 +200,12 @@
   )
 (global-set-key [(super r)] 'my-insert-time)
 
+(defun my-insert-time2 ()
+  (interactive)
+  (insert (concat "** " (current-time-string) "\n" ))
+  )
+(global-set-key [(super R)] 'my-insert-time2)
+
 ;; recentf
 (setq recentf-auto-cleanup 'never)
 (recentf-mode 1)
@@ -554,11 +560,22 @@
 
 
 
-(require 'shell-command)
-(shell-command-completion-mode)
+;; (require 'shell-command)
+;; (shell-command-completion-mode)
 
-(require 'shell-history)
-(define-key shell-mode-map "\M-m" 'shell-add-to-history)
+;; (require 'shell-history)
+;; (define-key shell-mode-map "\M-m" 'shell-add-to-history)
+
+
+(setq max-specpdl-size 6000)
+
+
+;; quickrun
+;; http://d.hatena.ne.jp/syohex/20111126/1322291515
+(require 'quickrun)
+(push '("*quickrun*") popwin:special-display-config)
+(global-set-key [(super q)] 'quickrun)
+(global-set-key [(super Q)] 'quickrun-with-arg)
 
 
 ;; --------- タイマー系 選択時にだけチェックするように -------------
