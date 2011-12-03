@@ -117,8 +117,8 @@ setopt nocheckjobs
 
 # 履歴の設定
 HISTFILE=~/.zsh_history
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000
+SAVEHIST=1000000
 # 連続して同じコマンドのとき履歴に追加しない
 setopt hist_ignore_dups
 # 複数のシェルの履歴を共有
