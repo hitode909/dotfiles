@@ -5,6 +5,11 @@
 ;; 日本語
 (setq current-language-environment "Japanese")
 
+;; color-theme
+(require 'color-theme)
+(require 'color-theme-solarized)
+(color-theme-solarized-light)
+
 ;; status-barにカーソルのcolumn表示(4,29とか)
 (column-number-mode t)
 
@@ -81,9 +86,11 @@
 
 ;; 対応する括弧を光らせる
 (show-paren-mode 1)
-
-;;; ウィンドウ内に収まらないときだけ括弧内も光らせる。
-(setq show-paren-style 'mixed)
+(setq show-paren-delay 0)
+(setq show-paren-style 'expression)
+(set-face-attribute 'show-paren-match-face nil
+                    :background "#eee8d5" :foreground nil
+                    :underline nil :weight 'normal)
 
 ;; 画面チカチカさせない
 (setq visible-bell nil)
@@ -500,16 +507,17 @@
 
 
 
-(defface hlline-face
-  '((((class color)
-      (background dark))
-     (:background "gray"))
-    (((class color)
-      (background light))
-     (:background "rgb:cc/dd/ff"))
-    (t
-     ()))
-  "*Face used by hl-line.")
+;; (defface hlline-face
+;;   '((((class color)
+;;       (background dark))
+;;      (:background "gray"))
+;;     (((class color)
+;;       (background light))
+;;      (:background "rgb:cc/dd/ff"))
+;;     (t
+;;      ()))
+;;   "*Face used by hl-line.")
+
 (setq hl-line-face 'hlline-face)
 ; (setq hl-line-face 'underline) ; 下線
 
