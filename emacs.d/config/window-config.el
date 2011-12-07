@@ -18,7 +18,7 @@
   (set-face-foreground  'elscreen-tab-other-screen-face "#586e75")
   (set-face-underline-p 'elscreen-tab-other-screen-face nil)
   (set-face-background  'elscreen-tab-current-screen-face "#fdf6e3")
-  (set-face-foreground  'elscreen-tab-current-screen-face "#d33682")
+  (set-face-foreground  'elscreen-tab-current-screen-face "#2aa198")
   (set-face-underline-p 'elscreen-tab-current-screen-face nil)
   (set-face-bold-p      'elscreen-tab-current-screen-face t)
   ;;)
