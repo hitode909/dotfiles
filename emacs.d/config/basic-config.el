@@ -9,6 +9,12 @@
 (require 'color-theme)
 (require 'color-theme-solarized)
 (color-theme-solarized-light)
+(set-face-background 'header-line "#586e75")
+(set-face-foreground 'header-line "#fdf6e3")
+(set-face-bold-p 'header-line t)
+
+;; 行間
+(setq-default line-spacing 0.2)
 
 ;; status-barにカーソルのcolumn表示(4,29とか)
 (column-number-mode t)

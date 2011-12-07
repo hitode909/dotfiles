@@ -134,13 +134,16 @@
         collect (propertize i
                             'face anything-c-buffers-face3)))
 
-
 (defun anything-google ()
   (interactive)
   (anything-other-buffer 'anything-c-source-google-suggest "*anything google-suggest*"))
 
   (global-set-key  [(super g)] 'anything-google)
 
+
+;; faces
+(set-face-inherit 'anything-match 'isearch nil)
+(set-face-inherit 'anything-isearch-match 'isearch nil)
 
 
 ;; -------------------------old -------------------------
