@@ -1,4 +1,5 @@
 (load-file "~/.emacs.d/config/load-path-config.el")
+(load-file "~/.emacs.d/config/utils.el")
 
 (load-file "~/.emacs.d/config/basic-config.el")
 (load-file "~/.emacs.d/config/zencoding-mode-config.el")
