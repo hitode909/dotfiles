@@ -513,16 +513,8 @@
 
 
 
-;; (defface hlline-face
-;;   '((((class color)
-;;       (background dark))
-;;      (:background "gray"))
-;;     (((class color)
-;;       (background light))
-;;      (:background "rgb:cc/dd/ff"))
-;;     (t
-;;      ()))
-;;   "*Face used by hl-line.")
+(defface hlline-face '((t (:background "#fdf6ee"))) nil)
+(set-face-background 'hlline-face "#fef8e5")
 
 (setq hl-line-face 'hlline-face)
 ; (setq hl-line-face 'underline) ; 下線
