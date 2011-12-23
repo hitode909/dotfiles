@@ -14,7 +14,7 @@
 (set-face-bold-p 'header-line t)
 
 ;; 行間
-(setq-default line-spacing 0.2)
+(setq-default line-spacing 0.1)
 
 ;; status-barにカーソルのcolumn表示(4,29とか)
 (column-number-mode t)
