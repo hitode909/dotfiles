@@ -552,6 +552,9 @@
 (require 'clipboard-to-kill-ring)
 (clipboard-to-kill-ring t)
 
+(require 'suggest-restart)
+(suggest-restart t)
+
 ;; kill-ring に同じ内容の文字列を複数入れない
 (defadvice kill-new (before ys:no-kill-new-duplicates activate)
   (setq kill-ring (delete (ad-get-arg 0) kill-ring)))
