@@ -583,8 +583,9 @@
 ;; http://d.hatena.ne.jp/syohex/20111126/1322291515
 (require 'quickrun)
 (push '("*quickrun*") popwin:special-display-config)
-(global-set-key [(super q)] 'quickrun)
-(global-set-key [(super Q)] 'quickrun-with-arg)
+
+(global-set-key [(meta q)] 'quickrun)
+(global-set-key [(super q)] 'quickrun-with-arg)
 
 
 ;; --------- タイマー系 選択時にだけチェックするように -------------
