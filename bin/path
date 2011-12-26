@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+want = ARGV.shift
+list = []
+input = ARGF.read.each_line{ |line|
+  begin
+    if match = line.match(/^(.+):/)
+      list << match[1]
+    end
+  rescue => error
+    warn error
+  end
+}
+
+list.uniq!.sort!
+
+if want
+  puts list[want.to_i]
+else
+  list.each_with_index{ |v, i|
+    puts "#{i}\t#{v}"
+  }
+end

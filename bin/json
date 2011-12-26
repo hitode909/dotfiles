@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+
+require 'open-uri'
+require 'json'
+require 'pp'
+
+source = ARGV.length > 0 ? open(ARGV[0]).read : ARGF.read
+
+pp JSON.parse source

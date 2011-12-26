@@ -1,0 +1,22 @@
+#! /usr/bin/env ruby
+
+require 'base64'
+require 'mime/types'
+require 'httpclient'
+
+unless ARGV.length > 0
+  warn "Usage: #{$0} file..."
+  exit 1
+end
+
+def upload(file_path)
+  file_path = File.expand_path(ARGV.first)
+  mime_type = MIME::Types.type_for(file_path)[0].to_s
+  base64_content = Base64.encode64(open(file_path).read).gsub(/\n/, '')
+  data_url = "data:#{mime_type};base64,#{base64_content}"
+  HTTPClient.new.post_content("http://tinyurl.com/api-create.php", { :url => data_url})
+end
+
+ARGV.each{ |file_path|
+  puts upload(file_path)
+}
