@@ -587,6 +587,28 @@
 (global-set-key [(meta q)] 'quickrun)
 (global-set-key [(super q)] 'quickrun-with-arg)
 
+;; direx
+(require 'direx)
+
+
+(push '(direx:direx-mode :position left :width 25 :dedicated t)
+      popwin:special-display-config)
+
+(global-set-key (kbd "C-c C-j") 'direx:jump-to-directory-other-window)
+
+
+(defun jump-repository-top ()
+  (interactive)
+  (let* (
+         (repository-top-path (concat default-directory (replace-regexp-in-string "\n$" "" (shell-command-to-string "git rev-parse --show-cdup"))))
+         (dot-git-path (concat repository-top-path ".git/"))
+         (path (if (file-exists-p dot-git-path) repository-top-path default-directory))
+         )
+    (switch-to-buffer-other-window (direx:find-directory path))))
+
+
+(global-set-key (kbd "C-c C-k") 'jump-repository-top)
+
 
 ;; --------- タイマー系 選択時にだけチェックするように -------------
 ;; ここでやるの見苦しいからアドバイスで処理したい
