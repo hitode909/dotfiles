@@ -1,0 +1,5 @@
+#! /usr/bin/env ruby
+
+require 'pdf-reader' # gem install pdf-reader --prerelease
+
+puts PDF::Reader.new(ARGV.first).page_count
