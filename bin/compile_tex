@@ -1,0 +1,7 @@
+#! /usr/bin/env ruby
+
+tex = ARGV.first
+dvi = tex.gsub /tex$/, 'dvi'
+pdf = tex.gsub /tex$/, 'pdf'
+
+system "extractbb *.png && echo 'X' | platex #{tex} && dvipdfmx #{dvi} && pdf_page_count #{pdf}"
