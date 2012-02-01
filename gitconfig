@@ -3,6 +3,7 @@
 	name = hitode909
 [core]
 	excludesfile = ~/.gitignore
+	pager = lv -c
 [github]
 	user = hitode909
 [alias]
@@ -13,3 +14,5 @@
 	default = tracking
 [branch]
 	autosetuprebase = always
+[color]
+	ui = auto
