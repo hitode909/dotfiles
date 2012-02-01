@@ -438,3 +438,7 @@ alias j="jump -a"
 
 
 export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
+
+
+export HIVE_HOME=/usr/local/Cellar/hive/0.8.0/libexec
+export HADOOP_HOME=/usr/local/Cellar/hadoop/0.20.2
