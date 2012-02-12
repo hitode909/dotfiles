@@ -42,6 +42,6 @@
   (setq skk-dcomp-activate nil) ; 動的補完
   (setq skk-dcomp-multiple-activate t) ; 動的補完の複数候補表示
   (setq skk-dcomp-multiple-rows 10) ; 動的補完の候補表示件数
-  (setq skk-show-annotation t)  ; Annotation
+  ;; (setq skk-show-annotation t)  ; Annotation
   ;; (setq skk-annotation-show-wikipedia-url t) ; Annotation で Wikipedia を
 )
