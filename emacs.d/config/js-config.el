@@ -24,7 +24,7 @@
 
   )
 
-(when nil
+(when t
   ;; espesso-mode
   ;; http://www.nongnu.org/espresso/
   (autoload 'espresso-mode "espresso" "Start espresso-mode" t)
@@ -32,6 +32,7 @@
   (add-to-list 'auto-mode-alist '("\\.json$" . espresso-mode))
   )
 
+(when nil
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-hook 'js2-mode-hook
@@ -39,6 +40,7 @@
                (define-key js2-mode-map "\C-m" nil)
                (define-key js2-mode-map "\C-cm" 'next-error)
                ))
+)
 
 ;;moz-plus
 (autoload 'run-mozilla "moz" "run inferior moz" t)
