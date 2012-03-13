@@ -246,17 +246,49 @@ __git_reminder() {
   echo -n "$M"
 }
 
-_update_rprompt () {
-  RPROMPT="[${USER}@${HOST}:%~]"
-}
+autoload -Uz add-zsh-hook
+autoload -Uz colors
+colors
+autoload -Uz vcs_info
 
-precmd () {
-#     osascript -e 'tell application "System Events" to key code 28 using {command down, option down, control down}'
-    _update_rprompt
-#    export PROMPT='$(aa) '
-#    export PROMPT='(^q^) '
-    #git_status
+zstyle ':vcs_info:*' enable git svn hg bzr
+zstyle ':vcs_info:*' formats '(%s)-[%b]'
+zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
+zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
+zstyle ':vcs_info:bzr:*' use-simple true
+
+autoload -Uz is-at-least
+if is-at-least 4.3.10; then
+  # この check-for-changes が今回の設定するところ
+  zstyle ':vcs_info:git:*' check-for-changes true
+  zstyle ':vcs_info:git:*' stagedstr "+"    # 適当な文字列に変更する
+  zstyle ':vcs_info:git:*' unstagedstr "-"  # 適当の文字列に変更する
+  zstyle ':vcs_info:git:*' formats '(%s)-[%b] %c%u'
+  zstyle ':vcs_info:git:*' actionformats '(%s)-[%b|%a] %c%u'
+fi
+
+function _update_vcs_info_msg() {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+    PROMPT="%(?.%F{cyan}.%F{magenta})[${USER}@${HOST}:%~] %1(v|%1v|)
+%% %f"
+
 }
+add-zsh-hook precmd _update_vcs_info_msg
+
+
+# _update_rprompt () {
+#   RPROMPT="[${USER}@${HOST}:%~]"
+# }
+# 
+# precmd () {
+# #     osascript -e 'tell application "System Events" to key code 28 using {command down, option down, control down}'
+#     _update_rprompt
+# #    export PROMPT='$(aa) '
+# #    export PROMPT='(^q^) '
+#     #git_status
+# }
 
 preexec() {
     # wget "http://bijo-linux.com/girls_images/$(echo $1 | cut -d ' ' -f 1).jpg" >& /dev/null
