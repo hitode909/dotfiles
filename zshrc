@@ -271,7 +271,7 @@ function _update_vcs_info_msg() {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-    PROMPT="%(?.%F{cyan}.%F{magenta})[${USER}@${HOST}:%~] %1(v|%1v|)
+    PROMPT="%(?.%F{green}.%F{red})[${USER}@${HOST}:%~] %1(v|%1v|)
 %% %f"
 
 }
