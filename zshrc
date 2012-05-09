@@ -448,7 +448,12 @@ zstyle ':completion:*' use-cache true
 function hatena () {
     if pwd | grep "Hatena" > /dev/null; then
         echo "～ ☆をくれた人に「カラースター」でお返ししよう！ ～"
-        rvm use ruby-1.8.7
+        rvm use ruby-1.8.7-p352
+    fi
+
+    if pwd | grep "Epic" > /dev/null; then
+        echo "5.14.2"
+        perlbrew use perl-5.14.2
     fi
 }
 
@@ -474,3 +479,5 @@ export NODE_PATH=/usr/local/lib/node_modules:$NODE_PATH
 
 export HIVE_HOME=/usr/local/Cellar/hive/0.8.0/libexec
 export HADOOP_HOME=/usr/local/Cellar/hadoop/0.20.2
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
