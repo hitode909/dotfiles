@@ -7,6 +7,11 @@
   (interactive)
   (compile (format "cd  %s; %s -MProject::Libs %s" (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-cdup")) (expand-file-name "~/perl5/perlbrew/perls/current/bin/perl") (buffer-file-name (current-buffer)))))
 
+(defun run-perl-coverage ()
+  "エラーを表示します"
+  (interactive)
+  (compile (format "cd  %s; cover -report compilationcover -silent -no-summary -report compilation -coverage statement | sed s/:$//" (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-cdup")))))
+
 
 (defun run-perl-method-test ()
   (interactive)
