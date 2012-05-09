@@ -146,6 +146,11 @@
 (set-face-inherit 'anything-isearch-match 'isearch nil)
 
 
+
+(global-set-key (kbd "C-:") 'anything-filelist+)
+(setq anything-c-filelist-file-name "/tmp/all.filelist")
+
+
 ;; -------------------------old -------------------------
 (when nil
 
