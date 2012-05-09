@@ -11,7 +11,7 @@
         clone-branch = "!sh -c 'git checkout -t origin/$0'"
         current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
 [push]
-	default = tracking
+	default = current
 [branch]
 	autosetuprebase = always
 [color]
