@@ -27,23 +27,23 @@
         (compile (format "cd  %s; TEST_METHOD=%s %s -MProject::Libs %s" (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-cdup")) test-method (expand-file-name "~/perl5/perlbrew/perls/current/bin/perl") (buffer-file-name (current-buffer))))
         (compile (format "cd  %s; %s -MProject::Libs %s" (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-cdup")) (expand-file-name "~/perl5/perlbrew/perls/current/bin/perl") (buffer-file-name (current-buffer)))))))
 
-(defun my-cperl-save ()
-  (interactive)
-  (save-buffer)
-  (perltidy-buffer)
-  (point-undo)
-  )
+;; (defun my-cperl-save ()
+;;   (interactive)
+;;   (save-buffer)
+;;   (perltidy-buffer)
+;;   (point-undo)
+;;   )
 
-(defun my-cperl-save-subroutine ()
-  (interactive)
-  (save-buffer)
-  (perltidy-subroutine)
-  (point-undo)
-  )
+;; (defun my-cperl-save-subroutine ()
+;;   (interactive)
+;;   (save-buffer)
+;;   (perltidy-subroutine)
+;;   (point-undo)
+;;   )
 
-;; perltidy
-(require 'perltidy)
-(require 'point-undo)
+;; ;; perltidy
+;; (require 'perltidy)
+;; (require 'point-undo)
 
 ;; インデントにタブを使わない
 (add-hook 'cperl-mode-hook
@@ -63,8 +63,8 @@
 
              (define-key cperl-mode-map [(super T)] 'run-perl-test)
              (define-key cperl-mode-map [(super t)] 'run-perl-method-test)
-             (define-key cperl-mode-map "\C-x\C-S" 'my-cperl-save)
-             (define-key cperl-mode-map "\C-x\C-t" 'my-cperl-save-subroutine)
+             ;; (define-key cperl-mode-map "\C-x\C-S" 'my-cperl-save)
+             ;; (define-key cperl-mode-map "\C-x\C-t" 'my-cperl-save-subroutine)
              ))
 
 (setq-default indent-tabs-mode nil)
