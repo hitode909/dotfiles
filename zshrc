@@ -117,8 +117,8 @@ setopt nocheckjobs
 
 # 履歴の設定
 HISTFILE=~/.zsh_history
-HISTSIZE=1000000
-SAVEHIST=1000000
+HISTSIZE=10000000
+SAVEHIST=10000000
 # 連続して同じコマンドのとき履歴に追加しない
 setopt hist_ignore_dups
 # 複数のシェルの履歴を共有
@@ -481,3 +481,9 @@ export HIVE_HOME=/usr/local/Cellar/hive/0.8.0/libexec
 export HADOOP_HOME=/usr/local/Cellar/hadoop/0.20.2
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+source ~/co/zaw/zaw.zsh
+
+bindkey '^T' zaw-history
+
+export ZAW_HISTORY_LIMIT=5000
