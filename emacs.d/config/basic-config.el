@@ -691,3 +691,14 @@ This is an internal function used by Auto-Revert Mode."
 (global-set-key (kbd "C-2") 'er/expand-region)
 (global-set-key (kbd "C-M-2") 'er/contract-region)
 (global-set-key (kbd "C-@") 'er/contract-region)
+
+
+(defun my-server-detach-buffer ()
+  (interactive)
+  (server-buffer-done (current-buffer) t)
+  (message "Detached")
+  )
+(global-set-key [(super z)] 'my-server-detach-buffer)
+
+
+
