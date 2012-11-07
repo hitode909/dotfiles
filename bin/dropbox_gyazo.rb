@@ -15,7 +15,7 @@ if File.exist?(file) then
 end
 
 begin
-  puts open(url).read
+  open(url)
 rescue
   sleep 0.3
   retry
