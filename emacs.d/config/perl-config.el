@@ -56,15 +56,14 @@
              (setq cperl-tab-always-indent t)
              (setq cperl-indent-parens-as-block t)
 
-             ;; (require 'auto-complete)
-             ;; (require 'perl-completion)
-             ;; (add-to-list 'ac-sources 'ac-source-perl-completion)
-             ;; (perl-completion-mode t)
-
              (define-key cperl-mode-map [(super T)] 'run-perl-test)
              (define-key cperl-mode-map [(super t)] 'run-perl-method-test)
-             ;; (define-key cperl-mode-map "\C-x\C-S" 'my-cperl-save)
-             ;; (define-key cperl-mode-map "\C-x\C-t" 'my-cperl-save-subroutine)
+
+             (require 'auto-complete)
+             (require 'perl-completion)
+             (add-to-list 'ac-sources 'ac-source-perl-completion)
+             (perl-completion-mode t)
+
              ))
 
 (setq-default indent-tabs-mode nil)
