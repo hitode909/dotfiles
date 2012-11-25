@@ -39,9 +39,11 @@
 
 ;; カーソル
 (set-cursor-color "orange")
-(setq blink-cursor-interval 0.1)
+(setq blink-cursor-interval 0.04)
 (setq blink-cursor-delay 1.0)
-(blink-cursor-mode 1)
+; (blink-cursor-mode 1)
+(blink-cursor-mode 0)
+
 
 ;; リージョンをC-hで削除
 (delete-selection-mode 1)
@@ -291,7 +293,7 @@
 ;minibuffer への入力内容を覚えててくれます。
 (when (require 'session nil t)
 (setq session-initialize '(de-saveplace session keys menus places)
-      session-globals-include '((kill-ring 50)
+      session-globals-include '((kill-ring 500)
                                 (session-file-alist 500 t)
                                 (file-name-history 10000)))
 ;; これがないと file-name-history に500個保存する前に max-string に達する
@@ -521,7 +523,9 @@
 
 (global-hl-line-mode t)
 
-(setq gc-cons-threshold 80960000)        ; 40M(default: 400K)
+(setq gc-cons-threshold 4096000)        ; 40M(default: 400K)
+
+
 
 
 ;; dropで開く
@@ -683,9 +687,6 @@ This is an internal function used by Auto-Revert Mode."
 	(setq flymake-last-change-time nil)
 	(flymake-log 3 "starting syntax check as more than 1 second passed since last change")
 	(flymake-start-syntax-check)))))
-
-
-
 
 (require 'expand-region)
 (global-set-key (kbd "C-2") 'er/expand-region)

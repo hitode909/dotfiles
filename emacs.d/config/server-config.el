@@ -1,6 +1,7 @@
  ;; emacs-serverを起動
   (server-start)
-  ;; (setq server-use-tcp t)
+
+(setq server-use-tcp t)
 
 
   ;; C-x kで終了
