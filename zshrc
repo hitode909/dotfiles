@@ -59,6 +59,8 @@ alias cp="cp -v"
 alias o="open ."
 alias perlcode="perldoc -m"
 alias killf="kill -9"
+alias g="magit-status"
+alias ig="tig"
 
 function e()
 {
@@ -489,3 +491,4 @@ source ~/co/zaw/zaw.zsh
 bindkey '^T' zaw-history
 
 export ZAW_HISTORY_LIMIT=5000
+
