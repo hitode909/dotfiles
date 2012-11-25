@@ -235,7 +235,7 @@ rpwd () {
 }
 
 _set_env_git_current_branch() {
-  GIT_CURRENT_BRANCH=$( git branch &> /dev/null | grep '^\*' | cut -b 3- )
+  GIT_CURRENT_BRANCH=$( git name-rev --name-only --refs=refs/heads/* HEAD )
 }
 
 __git_reminder() {
