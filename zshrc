@@ -453,6 +453,8 @@ function hatena () {
 
     if pwd | grep "Epic" > /dev/null; then
         echo "5.14.2"
+        echo "1.9.2"
+        rvm use ruby-1.9.2
         perlbrew use perl-5.14.2
     fi
 }
