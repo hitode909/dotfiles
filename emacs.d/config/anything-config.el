@@ -79,6 +79,11 @@
 (define-key anything-dabbrev-map "\M-/" 'anything-dabbrev-find-all-buffers)
 (setq dabbrev-case-fold-search nil)  ;; dabbrev時に、大文字・小文字を区別しない。
 
+(defun anything-find-etags ()
+  (interactive)
+  (anything-other-buffer 'anything-c-source-etags-select "*anything etags*"))
+
+(global-set-key  [(super a)] 'anything-find-etags)
 
 (when (eq system-type 'darwin)
   (require 'anything-mac-itunes)
