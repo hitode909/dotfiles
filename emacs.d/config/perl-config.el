@@ -21,13 +21,28 @@
     (save-excursion
       (when (or
              (re-search-backward "\\bsub\s+\\([_[:alpha:]]+\\)\s*:\s*Test" nil t)
-             (re-search-forward "\\bsub\s+\\([_[:alpha:]]+\\)\s*:\s*Test" nil t)
-             (re-search-backward "^subtest\s+['\"]?\\([^'\"\s]+\\)['\"]?\s*=>\s*sub" nil t)
-             (re-search-foreward "^subtest\s+['\"]?\\([^'\"\s]+\\)['\"]?\s*=>\s*sub" nil t))
+             (re-search-forward "\\bsub\s+\\([_[:alpha:]]+\\)\s*:\s*Test" nil t))
         (setq test-method (match-string 1))))
     (if test-method
-        (compile (format "cd  %s; TEST_METHOD=\"%s\" SUBTEST_FILTER=\"%s\" %s -MProject::Libs %s" (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-cdup")) test-method test-method (expand-file-name "~/perl5/perlbrew/perls/current/bin/perl") (buffer-file-name (current-buffer))))
-        (compile (format "cd  %s; %s -MProject::Libs %s" (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-cdup")) (expand-file-name "~/perl5/perlbrew/perls/current/bin/perl") (buffer-file-name (current-buffer)))))))
+        (compile (format "cd  %s; TEST_METHOD=\"%s\" %s -MProject::Libs %s"
+                         (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-cdup"))
+                         test-method
+                         (expand-file-name "~/perl5/perlbrew/perls/current/bin/perl")
+                         (buffer-file-name (current-buffer))))
+      (let ((a 1))
+        (save-excursion
+          (when (or
+                 (re-search-backward "^subtest\s+['\"]?\\([^'\"\s]+\\)['\"]?\s*=>\s*sub" nil t)
+                 (re-search-foreward "^subtest\s+['\"]?\\([^'\"\s]+\\)['\"]?\s*=>\s*sub" nil t))
+            (setq test-method (match-string 1))))
+        (if test-method
+            (compile (format "cd  %s; SUBTEST_FILTER=\"%s\" %s -MProject::Libs %s"
+                             (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-cdup"))
+                             test-method
+                             (expand-file-name "~/perl5/perlbrew/perls/current/bin/perl")
+                             (buffer-file-name (current-buffer)))))
+        (message "not match")
+        ))))
 
 ;; (defun my-cperl-save ()
 ;;   (interactive)
