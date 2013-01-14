@@ -2,6 +2,9 @@
 (setq auto-mode-alist
       (append '(("\\.\\([pP][Llm]\\|t\\)$" . cperl-mode))  auto-mode-alist ))
 
+
+(setq cperl-hairy t)
+
 (defun run-perl-test ()
   "test実行します"
   (interactive)
