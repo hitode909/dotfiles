@@ -26,3 +26,8 @@
              (define-key ruby-mode-map (kbd "P") (smartchr '("P" "require pp; pp ")))
              (define-key ruby-mode-map (kbd ">") (smartchr '(">" " => " ">>" " > " " >= " " => '`!!''" " => \"`!!'\"")))
              ))
+
+(add-hook 'espresso-mode-hook
+          '(lambda ()
+             (define-key espresso-mode-map (kbd "F") (smartchr '("F" "function() { `!!' }")))
+             ))
