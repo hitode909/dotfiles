@@ -702,4 +702,49 @@ This is an internal function used by Auto-Revert Mode."
 (global-set-key [(super z)] 'my-server-detach-buffer)
 
 
+;; 直前の単語を削除
+(defun kill-region-or-backward-kill-word ()
+  (interactive)
+  (if (region-active-p)
+      (kill-region (point) (mark))
+    (backward-kill-word 1)))
 
+(global-set-key (kbd "C-w") 'kill-region-or-backward-kill-word)
+
+;; クオートを入れ替え
+(defvar swap-quotes-list
+  '((?\" ?\') (?\' ?\`) (?\` ?\")))
+
+(defun transpose-chars-or-swap-quotes (arg)
+  (interactive "p")
+  (or (swap-quotes) (transpose-chars arg)))
+
+(defun swap-quotes ()
+  (interactive)
+  (catch 'break
+    (dolist (i swap-quotes-list)
+      (let ((target-char (car i))
+            (replaced-char (cadr i))
+            (prev-pos (point)))
+        (if (= (char-after (point)) target-char)
+            (save-excursion
+              (forward-char 1)
+              (let ((next-pos (re-search-forward (char-to-string target-char))))
+                (if next-pos
+                    (subst-char-in-region prev-pos next-pos target-char replaced-char)
+                  (message "The corresponding quote is not found.")))
+              (throw 'break t)))))
+    nil))
+
+(global-set-key (kbd "C-'") 'swap-quotes)
+
+(when (require 'undohist nil t)
+  (undohist-initialize))
+
+(require 'foreign-regexp)
+
+(custom-set-variables
+ '(foreign-regexp/regexp-type 'perl)
+ '(reb-re-syntax 'foreign-regexp))
+
+(global-set-key (kbd "M-%") 'foreign-regexp/query-replace)
