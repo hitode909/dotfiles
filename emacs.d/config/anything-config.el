@@ -200,6 +200,10 @@
 (global-set-key (kbd "M-p") 'anything-git-project)
 
 
+(when (require 'anything nil t)
+  (require 'anything-exuberant-ctags)
+  (define-key global-map (kbd "C-#") 'anything-exuberant-ctags-select-from-here)
+  )
 
 
 ;; -------------------------old -------------------------
