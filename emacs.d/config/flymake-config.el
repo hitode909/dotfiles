@@ -42,7 +42,7 @@
              (flymake-mode t)))
 
 (defun my-git-root-directory ()
-  (expand-file-name (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-cdup"))))
+  (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-toplevel")))
 
 ;; flymake for perl
 (defvar flymake-perl-err-line-patterns '(("\\(.*\\) at \\([^ \n]+\\) line \\([0-9]+\\)[,.\n]" 2 3 nil 1)))
