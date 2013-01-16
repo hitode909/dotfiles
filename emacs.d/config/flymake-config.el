@@ -41,6 +41,9 @@
           '(lambda ()
              (flymake-mode t)))
 
+(defun my-git-root-directory ()
+  (expand-file-name (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-cdup"))))
+
 ;; flymake for perl
 (defvar flymake-perl-err-line-patterns '(("\\(.*\\) at \\([^ \n]+\\) line \\([0-9]+\\)[,.\n]" 2 3 nil 1)))
 (defconst flymake-allowed-perl-file-name-masks '(("\\.pl$" flymake-perl-init)
@@ -54,7 +57,7 @@
          (local-file (file-relative-name
                       temp-file
                       (file-name-directory buffer-file-name))))
-    (list (expand-file-name "~/perl5/perlbrew/perls/current/bin/perl") (list "-MProject::Libs" "-wc" local-file))))
+    (list (expand-file-name "~/perl5/perlbrew/perls/current/bin/perl") (list "-MProject::Libs" (format "-I%s" (my-git-root-directory)) "-wc" local-file))))
 
 (defun flymake-perl-load ()
   (interactive)
