@@ -2,9 +2,7 @@
 (require 'smartchr)
 (global-set-key (kbd "=") (smartchr '(" = " "=" " == " "=")))
 (global-set-key (kbd "G") (smartchr '("G" "ありがとうございます")))
-;; (global-set-key (kbd "!") (smartchr '("!" "!!" " != ")))
-;; (global-set-key (kbd "<") (smartchr '("<" "<<" " < " " <= ")))
-;; (global-set-key (kbd "{") (smartchr '("{ `!!' }" "{")))
+
 (add-hook 'cperl-mode-hook
           '(lambda ()
              (define-key cperl-mode-map (kbd ">") (smartchr '(">" " => " ">>" " > " " >= " " => '`!!''" " => \"`!!'\"")))
@@ -17,10 +15,10 @@
              (define-key cperl-mode-map (kbd "|") (smartchr '(" || " "|")))
              (define-key cperl-mode-map (kbd "&") (smartchr '(" && " "&")))
              (define-key cperl-mode-map (kbd "{") (smartchr '("{" "sub { `!!' ")))
-
+             (define-key cperl-mode-map (kbd "H") (smartchr '("H" "Hatena")))
+             (define-key cperl-mode-map (kbd ":") (smartchr '("::" ":")))
              ))
 
-;; (define-key espresso-mode-map (kbd "L") (smartchr '("L" "console.log(`!!');")))
 (add-hook 'ruby-mode-hook
           '(lambda ()
              (define-key ruby-mode-map (kbd "P") (smartchr '("P" "require pp; pp ")))
