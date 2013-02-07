@@ -521,7 +521,7 @@
 (setq hl-line-face 'hlline-face)
 ; (setq hl-line-face 'underline) ; 下線
 
-(global-hl-line-mode t)
+; (global-hl-line-mode t)
 
 (setq gc-cons-threshold 4096000)        ; 40M(default: 400K)
 
@@ -738,8 +738,8 @@ This is an internal function used by Auto-Revert Mode."
 
 (global-set-key (kbd "C-'") 'swap-quotes)
 
-(when (require 'undohist nil t)
-  (undohist-initialize))
+;; (when (require 'undohist nil t)
+;;   (undohist-initialize))
 
 (require 'foreign-regexp)
 
@@ -747,4 +747,8 @@ This is an internal function used by Auto-Revert Mode."
  '(foreign-regexp/regexp-type 'perl)
  '(reb-re-syntax 'foreign-regexp))
 
-(global-set-key (kbd "M-%") 'foreign-regexp/query-replace)
+;; (global-unset-key (kbd "M-%") 'foreign-regexp/query-replace)
+
+
+(require 'edit-server)
+(edit-server-start)
