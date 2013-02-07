@@ -26,3 +26,29 @@
   (shell-command (concat "git show " (thing-at-point 'symbol)))
   )
 (global-set-key [(super return)] 'git-show-at-point)
+
+
+(defun git-root-directory ()
+  (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-toplevel")))
+
+(defun git-grep (grep-dir command-args)
+  (interactive
+   (let ((root (concat (git-root-directory) "/")))
+     (list
+      (read-file-name
+       "Directory for git grep: " root root t)
+      (read-shell-command
+            "Run git-grep (like this): "
+            (format "PAGER='' git grep -I -n -i -e %s"
+                    "")
+            'git-grep-history))))
+  (let ((grep-use-null-device nil)
+        (command
+         (format (concat
+                  "cd %s && "
+                  "%s")
+                 grep-dir
+                 command-args)))
+    (grep command)))
+
+(global-set-key [(super g)] 'git-grep)
