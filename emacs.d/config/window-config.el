@@ -23,8 +23,8 @@
   (set-face-bold-p      'elscreen-tab-current-screen-face t)
 
   (set-face-background 'ac-candidate-face "#eee8d5")
-  (set-face-foreground 'ac-candidate-face "#657b83")
-  (set-face-background 'ac-selection-face "#657b83")
+  (set-face-foreground 'ac-candidate-face "#586e75")
+  (set-face-background 'ac-selection-face "#586e75")
   (set-face-foreground 'ac-selection-face "#fdf6e3")
   ;;)
 
