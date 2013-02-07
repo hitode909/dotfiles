@@ -4,12 +4,18 @@
 (ac-config-default)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/site-lisp/auto-complete/dict")
 (global-auto-complete-mode t)
-(define-key ac-complete-mode-map "\C-n" 'ac-next)
-(define-key ac-complete-mode-map "\C-p" 'ac-previous)
+
+(setq ac-use-menu-map t)
+(define-key ac-menu-map "\C-n" 'ac-next)
+(define-key ac-menu-map "\C-p" 'ac-previous)
+
+;; (define-key ac-complete-mode-map "\C-n" 'ac-next)
+;; (define-key ac-complete-mode-map "\C-p" 'ac-previous)
 (setq ac-dwim t)
 (setq ac-ignore-case 'smart)
-(setq ac-auto-show-menu 0.4)
 (setq ac-menu-height 10)
+
+(setq ac-use-quick-help nil)
 
 (when (boundp 'ac-modes)
   (setq ac-modes
@@ -20,11 +26,10 @@
 ;; (define-key ac-complete-mode-map (kbd "C-;") 'ac-complete-with-anything)
 (require 'auto-complete-yasnippet)
 
-
-
 ;; ------------------------
 ;; 
 (require 'auto-complete-config)
+(ac-config-default)
 
 (defun my-ac-look ()
   "look コマンドの出力をリストで返す"
@@ -81,3 +86,14 @@
 (defadvice skk-mode-exit (before ad-skk-mode-exit last)
        "skk-modeから抜ける時にskk-kakuteiのadviceを不活性化。"
        (ad-deactivate 'skk-kakutei))
+
+
+;; -------------
+
+(setq ac-delay 0.05)
+(setq ac-auto-show-menu 0.05)
+
+(setq ac-use-menu-map t)
+(setq ac-use-fuzzy t)
+
+(define-key ac-mode-map (kbd "C-/") 'auto-complete)
