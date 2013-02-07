@@ -143,7 +143,7 @@
   (interactive)
   (anything-other-buffer 'anything-c-source-google-suggest "*anything google-suggest*"))
 
-  (global-set-key  [(super g)] 'anything-google)
+  (global-set-key  [(super G)] 'anything-google)
 
 
 ;; faces
