@@ -16,7 +16,8 @@
              (define-key cperl-mode-map (kbd "&") (smartchr '(" && " "&")))
              (define-key cperl-mode-map (kbd "{") (smartchr '("{" "sub { `!!' ")))
              (define-key cperl-mode-map (kbd "H") (smartchr '("H" "Hatena")))
-             (define-key cperl-mode-map (kbd ":") (smartchr '("::" ":")))
+             (define-key cperl-mode-map (kbd ":") (smartchr '("::" ": ")))
+             (define-key cperl-mode-map (kbd "E") (smartchr '("E" "Hatena::Epic::")))
              ))
 
 (add-hook 'ruby-mode-hook
