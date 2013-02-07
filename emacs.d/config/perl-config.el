@@ -76,14 +76,36 @@
              (define-key cperl-mode-map [(super T)] 'run-perl-test)
              (define-key cperl-mode-map [(super t)] 'run-perl-method-test)
 
+             (local-set-key (kbd "C-c C-c C-u") 'popup-editor-perl-use)
+
              (require 'auto-complete)
              (require 'perl-completion)
              (add-to-list 'ac-sources 'ac-source-perl-completion)
              (perl-completion-mode t)
 
+             (font-lock-add-keywords
+              'cperl-mode
+              '(("!" . font-lock-warning-face)))
+
+
              ))
 
 (setq-default indent-tabs-mode nil)
+
+;; 現在の位置のmodule名のuseを書くためにpopupする
+(defun popup-editor-perl-use ()
+  (interactive)
+  (let* ((module-name nil))
+    (cond ((use-region-p)
+           (setq module-name (buffer-substring (region-beginning) (region-end)))
+           (keyboard-escape-quit))
+          (t
+           (setq module-name (thing-at-point 'symbol))))
+    (kill-new (concat "use " module-name ";"))
+    (popwin:popup-buffer (current-buffer) :height 0.4)
+    (re-search-backward "^use " nil t)
+    (next-line)))
+
 
 ;; (add-hook 'cperl-mode-hook (lambda ()
 ;;                              (require 'perl-completion)
