@@ -492,3 +492,6 @@ bindkey '^T' zaw-history
 
 export ZAW_HISTORY_LIMIT=5000
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
