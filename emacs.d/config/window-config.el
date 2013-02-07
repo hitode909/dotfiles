@@ -21,6 +21,11 @@
   (set-face-foreground  'elscreen-tab-current-screen-face "#d33682")
   (set-face-underline-p 'elscreen-tab-current-screen-face nil)
   (set-face-bold-p      'elscreen-tab-current-screen-face t)
+
+  (set-face-background 'ac-candidate-face "#eee8d5")
+  (set-face-foreground 'ac-candidate-face "#657b83")
+  (set-face-background 'ac-selection-face "#657b83")
+  (set-face-foreground 'ac-selection-face "#fdf6e3")
   ;;)
 
   (when (= emacs-major-version 23)
