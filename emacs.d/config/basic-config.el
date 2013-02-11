@@ -755,3 +755,6 @@ This is an internal function used by Auto-Revert Mode."
 
 (require 'highlight-unique-symbol)
 (highlight-unique-symbol t)
+
+(set-face-foreground 'highlight-unique-symbol:face nil)
+(set-face-background 'highlight-unique-symbol:face "#f2cdce")
