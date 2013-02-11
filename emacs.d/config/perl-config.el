@@ -111,7 +111,11 @@
 ;;                              (require 'perl-completion)
 ;;                              (perl-completion-mode t)))
 
-
+(font-lock-add-keywords
+ 'perl-mode
+ '(
+   ("Hatean" 0 'font-lock-warning-face)
+   ))
 
 
 (setenv "MODULEBUILDRC" "/Users/fkd/perl5/.modulebuildrc")
