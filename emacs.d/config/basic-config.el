@@ -752,3 +752,6 @@ This is an internal function used by Auto-Revert Mode."
 
 (require 'edit-server)
 (edit-server-start)
+
+(require 'highlight-unique-symbol)
+(highlight-unique-symbol t)
