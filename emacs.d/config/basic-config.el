@@ -743,11 +743,11 @@ This is an internal function used by Auto-Revert Mode."
 ;; (when (require 'undohist nil t)
 ;;   (undohist-initialize))
 
-(require 'foreign-regexp)
+;; (require 'foreign-regexp)
 
-(custom-set-variables
- '(foreign-regexp/regexp-type 'perl)
- '(reb-re-syntax 'foreign-regexp))
+;; (custom-set-variables
+;;  '(foreign-regexp/regexp-type 'perl)
+;;  '(reb-re-syntax 'foreign-regexp))
 
 ;; (global-unset-key (kbd "M-%") 'foreign-regexp/query-replace)
 
