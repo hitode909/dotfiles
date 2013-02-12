@@ -694,6 +694,7 @@ This is an internal function used by Auto-Revert Mode."
 (global-set-key (kbd "C-M-2") 'er/contract-region)
 (global-set-key (kbd "C-@") 'er/contract-region)
 
+(require 'wgrep nil t)
 
 (defun my-server-detach-buffer ()
   (interactive)
