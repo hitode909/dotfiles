@@ -751,10 +751,6 @@ This is an internal function used by Auto-Revert Mode."
 
 ;; (global-unset-key (kbd "M-%") 'foreign-regexp/query-replace)
 
-
-(require 'edit-server)
-(edit-server-start)
-
 (require 'highlight-unique-symbol)
 (highlight-unique-symbol t)
 
