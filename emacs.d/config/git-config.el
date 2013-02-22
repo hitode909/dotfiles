@@ -52,3 +52,30 @@
     (grep command)))
 
 (global-set-key [(super g)] 'git-grep)
+
+
+;; -u をつける
+(magit-define-command push ()
+  (interactive)
+  (let* ((branch (or (magit-get-current-branch)
+		     (error "Don't push a detached head.  That's gross")))
+	 (branch-remote (magit-get-remote branch))
+	 (push-remote (if (or current-prefix-arg
+			      (not branch-remote))
+			  (magit-read-remote (format "Push %s to: " branch)
+					     branch-remote)
+			branch-remote))
+	 (ref-branch (magit-get "branch" branch "merge")))
+    (if (and (not branch-remote)
+	     (not current-prefix-arg))
+	(magit-set push-remote "branch" branch "remote"))
+    (apply 'magit-run-git-async "push" "-u" "-v" push-remote
+           (if ref-branch
+               (format "%s:%s" branch ref-branch)
+             branch)
+           magit-custom-options)
+    ;; Although git will automatically set up the remote,
+    ;; it doesn't set up the branch to merge (at least as of Git 1.6.6.1),
+    ;; so we have to do that manually.
+    (unless ref-branch
+      (magit-set (concat "refs/heads/" branch) "branch" branch "merge"))))
