@@ -115,6 +115,8 @@
  'perl-mode
  '(
    ("Hatean" 0 'font-lock-warning-face)
+   ("TODO" 0 'font-lock-warning-face)
+   ("XXX" 0 'font-lock-warning-face)
    ))
 
 
