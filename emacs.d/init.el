@@ -31,7 +31,6 @@
 (load-file "~/.emacs.d/config/auto-save-buffers-config.el")
 (load-file "~/.emacs.d/config/dictionary-config.el")
 (load-file "~/.emacs.d/config/git-config.el")
-(load-file "~/.emacs.d/config/override-config.el")
 
 
 (message "hi")

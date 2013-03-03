@@ -53,6 +53,7 @@
 
 (global-set-key [(super g)] 'git-grep)
 
+(setq magit-save-some-buffers nil)
 
 ;; -u をつける
 (magit-define-command push ()
