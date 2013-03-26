@@ -7,6 +7,14 @@
 (setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
                                      interpreter-mode-alist))
 
+(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Gemfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("Guardfile$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("simplecov$" . ruby-mode))
+
 (autoload 'run-ruby "inf-ruby"
   "Run an inferior Ruby process")
 (autoload 'inf-ruby-keys "inf-ruby"
@@ -57,7 +65,7 @@ and source-file directory for your debugger." t)
                               "shift_jis")
                              ((string-match "utf-8" coding-system)
                               "utf-8"))))
-        (insert (format "# -*- coding: %s -*-" encoding))))))
+        (insert (format "# encoding: %s" encoding))))))
 
 (add-hook 'before-save-hook 'ruby-insert-magic-comment-if-needed)
 
@@ -113,3 +121,9 @@ and source-file directory for your debugger." t)
  '(lambda ()
     ;; Don't want flymake mode for ruby regions in rhtml files
     (if (not (null buffer-file-name)) (flymake-mode))))
+
+
+(setq ruby-indent-level 4)
+
+(require 'rvm)
+(rvm-use-default)
