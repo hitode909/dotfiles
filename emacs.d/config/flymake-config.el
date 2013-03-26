@@ -143,3 +143,7 @@
 ;; (set-face-foreground 'flymake-errline "black")
 ;; (set-face-background 'flymake-warnline "yellow")
 ;; (set-face-foreground 'flymake-warnline "black")
+
+(defadvice flymake-start-syntax-check (around flymake-start-syntax-check-visible-only activate)
+  (when (get-buffer-window (current-buffer))
+    ad-do-it))

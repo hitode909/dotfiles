@@ -13,3 +13,6 @@
 [submodule "emacs.d/site-lisp/highlight-unique-symbol"]
 	path = emacs.d/site-lisp/highlight-unique-symbol
 	url = git://github.com/hitode909/emacs-highlight-unique-symbol.git
+[submodule "emacs.d/site-lisp/git-gutter"]
+	path = emacs.d/site-lisp/git-gutter
+	url = git://github.com/syohex/emacs-git-gutter.git
