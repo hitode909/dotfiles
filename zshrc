@@ -438,8 +438,8 @@ which perlbrew >& /dev/null && perlbrew use perl-5.8.9
 
 export PERL5LIB=~/perl5/lib
 
-alias git=hub
-compdef hub=git
+# alias git=hub
+# compdef hub=git
 
 # 補完キャッシュ
 zstyle ':completion:*' use-cache true
@@ -456,7 +456,7 @@ function hatena () {
     if pwd | grep "Epic" > /dev/null; then
         echo "5.14.2"
         echo "1.9.2"
-        rvm use ruby-1.9.2
+        rvm use ruby-1.9.2-p290
         perlbrew use perl-5.14.2
     fi
 }
