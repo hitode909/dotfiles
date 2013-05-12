@@ -1,0 +1,11 @@
+module Guard
+  module Notifier
+    module Emacs
+      extend self
+
+      def notify(type, title, message, image, options = { })
+        # disable
+      end
+    end
+  end
+end
