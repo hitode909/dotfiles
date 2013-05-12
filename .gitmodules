@@ -16,3 +16,6 @@
 [submodule "emacs.d/site-lisp/git-gutter"]
 	path = emacs.d/site-lisp/git-gutter
 	url = git://github.com/syohex/emacs-git-gutter.git
+[submodule "emacs.d/site-lisp/emacs-open-github-from-here"]
+	path = emacs.d/site-lisp/emacs-open-github-from-here
+	url = git://github.com/shibayu36/emacs-open-github-from-here.git
