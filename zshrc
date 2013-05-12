@@ -126,6 +126,10 @@ setopt hist_ignore_dups
 # 複数のシェルの履歴を共有
 setopt share_history
 
+# zmv
+autoload -Uz zmv
+alias zmv='noglob zmv -W'
+
 # C-p,C-nで履歴を出す
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -315,6 +319,7 @@ function chpwd()
   #_gprompt
   #git_status
   set_screen_title_pwd
+  hatena
 }
 
 set_screen_title_pwd
