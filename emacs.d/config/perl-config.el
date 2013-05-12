@@ -62,6 +62,18 @@
 ;; (require 'perltidy)
 ;; (require 'point-undo)
 
+(defun perl-rename-buffer ()
+  (interactive)
+  (let ((package-name (plcmp-get-current-package-name)))
+    (when package-name
+      (rename-buffer package-name t))))
+ 
+;; (add-hook  'cperl-mode-hook
+;;            (lambda ()
+;;              (ignore-errors
+;;                (require 'perl-completion)
+;;                )))
+
 ;; インデントにタブを使わない
 (add-hook 'cperl-mode-hook
           '(lambda ()
@@ -86,6 +98,8 @@
              (font-lock-add-keywords
               'cperl-mode
               '(("!" . font-lock-warning-face)))
+
+             ;; (perl-rename-buffer)
 
 
              ))
@@ -114,9 +128,9 @@
 (font-lock-add-keywords
  'perl-mode
  '(
-   ("Hatean" 0 'font-lock-warning-face)
    ("TODO" 0 'font-lock-warning-face)
    ("XXX" 0 'font-lock-warning-face)
+   ("Hatean" 0 'font-lock-warning-face)
    ))
 
 

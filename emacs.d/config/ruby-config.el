@@ -123,7 +123,7 @@ and source-file directory for your debugger." t)
     (if (not (null buffer-file-name)) (flymake-mode))))
 
 
-(setq ruby-indent-level 4)
+(setq ruby-indent-level 2)
 
 (require 'rvm)
 (rvm-use-default)

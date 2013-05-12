@@ -80,3 +80,6 @@
     ;; so we have to do that manually.
     (unless ref-branch
       (magit-set (concat "refs/heads/" branch) "branch" branch "merge"))))
+
+
+(require 'open-github-from-here)
