@@ -86,3 +86,6 @@
 
 (autoload 'mo-git-blame-file "mo-git-blame" nil t)
 (autoload 'mo-git-blame-current "mo-git-blame" nil t)
+
+(set-face-inverse-video-p 'diff-added nil)
+(set-face-inverse-video-p 'diff-removed nil)
