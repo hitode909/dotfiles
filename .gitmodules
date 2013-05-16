@@ -19,3 +19,6 @@
 [submodule "emacs.d/site-lisp/emacs-open-github-from-here"]
 	path = emacs.d/site-lisp/emacs-open-github-from-here
 	url = git://github.com/shibayu36/emacs-open-github-from-here.git
+[submodule "emacs.d/site-lisp/mo-git-blame"]
+	path = emacs.d/site-lisp/mo-git-blame
+	url = git://github.com/mbunkus/mo-git-blame.git
