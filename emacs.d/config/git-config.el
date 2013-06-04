@@ -65,3 +65,6 @@
 
 (set-face-inverse-video-p 'diff-added nil)
 (set-face-inverse-video-p 'diff-removed nil)
+
+(set-face-foreground 'magit-header "#586e75")
+(set-face-background 'magit-header "#fdf6e3")
