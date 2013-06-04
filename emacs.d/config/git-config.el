@@ -39,7 +39,7 @@
        "Directory for git grep: " root root t)
       (read-shell-command
             "Run git-grep (like this): "
-            (format "git --no-pager grep -I -n -i -e %s"
+            (format "git --no-pager grep --no-color -I -n -i -e %s"
                     "")
             'git-grep-history))))
   (let ((grep-use-null-device nil)
