@@ -14,12 +14,13 @@ if File.exist?(file) then
   system "sips -d profile --deleteColorManagementProperties \"#{file}\""
 end
 
+retries = 0
 begin
-  open(url)
+  open(url) if retries < 20
 rescue
+  retries += 1
   sleep 0.3
   retry
 end
 
-system "echo -n #{url} | pbcopy"
 system "open #{url}"
