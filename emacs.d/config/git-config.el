@@ -33,14 +33,20 @@
 
 (defun git-grep (grep-dir command-args)
   (interactive
-   (let ((root (concat (git-root-directory) "/")))
+   (let (
+         (root (concat (git-root-directory) "/"))
+         (default-word (or
+                        (and mark-active (buffer-substring-no-properties (region-beginning) (region-end)))
+                        (and (symbol-at-point) (symbol-name (symbol-at-point)))
+                        ""))
+         )
      (list
       (read-file-name
        "Directory for git grep: " root root t)
       (read-shell-command
             "Run git-grep (like this): "
             (format "git --no-pager grep --no-color -I -n -i -e %s"
-                    "")
+                    (shell-quote-argument default-word))
             'git-grep-history))))
   (let ((grep-use-null-device nil)
         (command
