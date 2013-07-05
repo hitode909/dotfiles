@@ -488,3 +488,9 @@ function do_enter() {
 }
 zle -N do_enter
 bindkey '^m' do_enter
+
+
+
+alias keyoff='sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext/'
+
+alias keyon='sudo kextload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext/'
