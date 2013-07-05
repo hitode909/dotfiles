@@ -22,3 +22,6 @@
 [submodule "emacs.d/site-lisp/mo-git-blame"]
 	path = emacs.d/site-lisp/mo-git-blame
 	url = git://github.com/mbunkus/mo-git-blame.git
+[submodule "emacs.d/site-lisp/google-translate"]
+	path = emacs.d/site-lisp/google-translate
+	url = https://github.com/manzyuk/google-translate

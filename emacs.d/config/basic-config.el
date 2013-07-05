@@ -765,3 +765,9 @@ This is an internal function used by Auto-Revert Mode."
 (set-face-underline  'highlight-unique-symbol:face nil)
 (set-face-background 'highlight-unique-symbol:face "#e7e4ff")
 
+(require 'cl)
+(defalias 'cl-flet 'flet)
+
+(require 'google-translate)
+(global-set-key "\C-ct" 'google-translate-at-point)
+(global-set-key "\C-cT" 'google-translate-query-translate)
