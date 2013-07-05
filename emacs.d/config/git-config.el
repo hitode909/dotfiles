@@ -34,7 +34,7 @@
 (defun git-grep (grep-dir command-args)
   (interactive
    (let (
-         (root (concat (git-root-directory) "/"))
+         (root (vc-git-root default-directory))
          (default-word (or
                         (and mark-active (buffer-substring-no-properties (region-beginning) (region-end)))
                         (and (symbol-at-point) (symbol-name (symbol-at-point)))
