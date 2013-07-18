@@ -103,16 +103,6 @@
   (push '("*Shell Command Output*" :noselect t :height 0.5) popwin:special-display-config)
   )
 
-(when (require 'magit nil t)
-  (require 'anything-git-grep)
-  (defun anything-git-grep ()
-    (interactive)
-    (anything-other-buffer 'anything-c-source-git-grep "*anything find-file*"))
-
-  (global-set-key  [(super o)] 'anything-git-grep)
-  )
-
-
 ;; https://gist.github.com/1026506
 (anything-c-arrange-type-attribute 'buffer
   '((candidate-transformer REST
@@ -149,8 +139,6 @@
 ;; faces
 (set-face-inherit 'anything-match 'isearch nil)
 (set-face-inherit 'anything-isearch-match 'isearch nil)
-
-
 
 (global-set-key (kbd "C-:") 'anything-filelist+)
 (setq anything-c-filelist-file-name "/tmp/all.filelist")
