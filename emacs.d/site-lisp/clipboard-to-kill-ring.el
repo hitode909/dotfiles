@@ -18,7 +18,7 @@
 (defvar clipboard-to-kill-ring:timer nil)
 
 (defun clipboard-to-kill-ring:observe ()
-  (let ((clip (x-cut-buffer-or-selection-value)))
+  (let ((clip (x-selection-value)))
     (when (and clip (not (string= (car kill-ring) clip)))
       (kill-new clip)
       (message clip))))

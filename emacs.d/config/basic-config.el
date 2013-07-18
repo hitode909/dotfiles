@@ -557,8 +557,8 @@
 ;; compile scroll
 (setq compilation-scroll-output t)
 
-;; (require 'clipboard-to-kill-ring)
-;; (clipboard-to-kill-ring t)
+(require 'clipboard-to-kill-ring)
+(clipboard-to-kill-ring t)
 
 (require 'suggest-restart)
 (suggest-restart t)
