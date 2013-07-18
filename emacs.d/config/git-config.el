@@ -31,30 +31,27 @@
 (defun git-root-directory ()
   (replace-regexp-in-string "\n+$" "" (shell-command-to-string "git rev-parse --show-toplevel")))
 
-(defun git-grep (grep-dir command-args)
+(defun git-grep (grep-dir grep-word)
   (interactive
    (let (
          (root (vc-git-root default-directory))
          (default-word (or
                         (and mark-active (buffer-substring-no-properties (region-beginning) (region-end)))
                         (and (symbol-at-point) (symbol-name (symbol-at-point)))
-                        ""))
+                        ))
          )
      (list
       (read-file-name
-       "Directory for git grep: " root root t)
+       "In directory: " root root t)
       (read-shell-command
-            "Run git-grep (like this): "
-            (format "git --no-pager grep --no-color -I -n -i -e %s"
-                    (shell-quote-argument default-word))
+            "Search for: "
+            default-word
             'git-grep-history))))
   (let ((grep-use-null-device nil)
         (command
-         (format (concat
-                  "cd %s && "
-                  "%s")
+         (format "cd %s && git --no-pager grep --no-color -I -n -i -e %s"
                  grep-dir
-                 command-args)))
+                 (shell-quote-argument grep-word))))
     (grep command)))
 
 (global-set-key [(super g)] 'git-grep)
