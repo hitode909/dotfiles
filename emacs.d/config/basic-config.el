@@ -776,3 +776,13 @@ This is an internal function used by Auto-Revert Mode."
 (custom-set-variables
   '(google-translate-default-source-language "en")
   '(google-translate-default-target-language "ja"))
+
+
+
+(setq desktop-globals-to-save '(extended-command-history))
+(setq desktop-files-not-to-save "")
+(desktop-save-mode 1)
+
+(add-hook 'after-init-hook
+	  '(lambda ()
+             (desktop-read)))
