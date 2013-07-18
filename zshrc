@@ -1,5 +1,5 @@
 # path
-export PATH=~/bin:/usr/local/bin:/usr/local/sbin:~/co/commands/bin:$PATH
+export PATH=~/bin:~/homebrew/bin:/usr/local/bin:/usr/local/sbin:~/co/commands/bin:$PATH
 # export PATH=/opt/local/bin:$PATH
 
 # mactex

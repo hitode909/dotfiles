@@ -7,7 +7,7 @@ fmount2() {
 
 
 # java (for cassandra)
-export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=$(/usr/libexec/java_home)
 
 # perl
 # eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)
@@ -16,13 +16,17 @@ alias emacsclient=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
 
 export EDITOR=/Applications/Emacs.app/Contents/MacOS/bin/emacsclient
 
-alias less="/usr/share/vim/vim7*/macros/less.sh"
+# alias less="/usr/share/vim/vim7*/macros/less.sh"
 
-export XDG_DATA_HOME=/usr/local/Cellar/shared-mime-info/0.90/share
-export XDG_DATA_DIRS=/usr/local/Cellar/shared-mime-info/0.90/share
-update-mime-database /usr/local/Cellar/shared-mime-info/0.90/share/mime/
+# export XDG_DATA_HOME=/usr/local/Cellar/shared-mime-info/0.90/share
+# export XDG_DATA_DIRS=/usr/local/Cellar/shared-mime-info/0.90/share
+# update-mime-database /usr/local/Cellar/shared-mime-info/0.90/share/mime/
 
-export PATH=/usr/local/mysql/bin:$PATH
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib
+# export PATH=/usr/local/mysql/bin:$PATH
+# export DYLD_LIBRARY_PATH=/usr/local/mysql/lib
 
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:/usr/xX11/lib
+# export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:/usr/xX11/lib
+
+ unalias run-help
+  autoload run-help
+  HELPDIR=/Users/hitode909/homebrew/share/zsh/helpfiles
