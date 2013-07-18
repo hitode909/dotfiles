@@ -1,13 +1,11 @@
-;;; skk-jisx0201.el --- JIS X 0201 ｶﾅ, Roman -*- coding: iso-2022-7bit -*-
+;;; skk-jisx0201.el --- JIS X 0201 ｶﾅ, Roman -*- coding: iso-2022-7bit -*-
 
 ;; Copyright (C) 1999-2007  SKK Development Team <skk@ring.gr.jp>
 
 ;; Author: Tsukamoto Tetsuo <czkmt@remus.dti.ne.jp>
 ;; Maintainer: SKK Development Team <skk@ring.gr.jp>
-;; Version: $Id: skk-jisx0201.el,v 1.54 2007/04/22 02:38:26 skk-cvs Exp $
 ;; Keywords: japanese, mule, input method
 ;; Created: Oct. 30, 1999.
-;; Last Modified: $Date: 2007/04/22 02:38:26 $
 
 ;; This file is part of Daredevil SKK.
 
@@ -44,18 +42,17 @@
 ;;     換します。
 ;;
 ;; `skk-jisx0201-roman-rule-list' に JISX0201.1976 Japanese Roman
-;;  (latin-jisx0201) の文字列を定義しています。ただし JISX0201.1976 Japanese
-;;  Roman 入力は今のところ Emacs 20.3 以降と XEmacs 21 以降でしか出来ていませ
-;; ん。ｶﾅ と roman を切り替える機能 `skk-toggle-jisx0201' にはキー定義してい
-;; ません。
+;; (latin-jisx0201) の文字列を定義しています。ただし GNU Emacs 23 以降、ファ
+;; イル保存時に JIS X 0201 Roman と ASCII の区別がされなくなったようです (円
+;; 記号およびオーバーラインを除く)。したがってこのファイルの現行版では、これ
+;; らの 2 文字以外は ASCII の文字が定義されています。
 ;;
+;; ｶﾅ と roman を切り替える機能 `skk-toggle-jisx0201' にはキー定義していませ
+;; ん。
 ;;
 ;; <業務連絡>
 ;;
-;; このファイルを編集するときは、できれば XEmacs を使ってください。 Emacs 20
-;; はデフォルトでは JISX0201.1976 Japanese Roman を自動的に US-ASCII に変換す
-;; るようになっているからです。 Emacs 20.3 以降でこのファイルを編集する場合は、
-;; このファイルを開く前に
+;; GNU Emacs 20.3 〜 22 でこのファイルを編集する場合は、ファイルを開く前に
 ;;
 ;; (setq standard-translation-table-for-decode (make-translation-table nil))
 ;;
@@ -65,8 +62,7 @@
 
 (eval-when-compile
   (require 'skk-macs)
-  (require 'skk-vars)
-  (require 'static))
+  (require 'skk-vars))
 
 (require 'japan-util)
 
@@ -154,28 +150,28 @@
   "*SKK JISX0201 モードのベースのルール。")
 
 (defvar skk-jisx0201-roman-rule-list
-  '(("!" nil "!") ("\"" nil "\"") ("#" nil "#") ("$" nil "$") ("%" nil "%")
-    ("&" nil "&") ("'" nil "'") ("\(" nil "(") ("\)" nil ")") ("*" nil "*")
-    ("+" nil "+") ("," nil ",") ("-" nil "-") ("." nil ".") ("/" nil "/")
-    ("0" nil "0") ("1" nil "1") ("2" nil "2") ("3" nil "3") ("4" nil "4")
-    ("5" nil "5") ("6" nil "6") ("7" nil "7") ("8" nil "8") ("9" nil "9")
-    (":" nil ":") (";" nil ";") ("<" nil "<") ("=" nil "=") (">" nil ">")
-    ("?" nil "?") ("@" nil "@")
-    ("A" nil "A") ("B" nil "B") ("C" nil "C") ("D" nil "D") ("E" nil "E")
-    ("F" nil "F") ("G" nil "G") ("H" nil "H") ("I" nil "I") ("J" nil "J")
-    ("K" nil "K") ("L" nil "L") ("M" nil "M") ("N" nil "N") ("O" nil "O")
-    ("P" nil "P") ("Q" nil "Q") ("R" nil "R") ("S" nil "S") ("T" nil "T")
-    ("U" nil "U") ("V" nil "V") ("W" nil "W") ("X" nil "X") ("Y" nil "Y")
-    ("Z" nil "Z")
-    ("[" nil "[") ("\\" nil "\\") ("]" nil "]") ("^" nil "^") ("_" nil "_")
-    ("`" nil "`")
-    ("a" nil "a") ("b" nil "b") ("c" nil "c") ("d" nil "d") ("e" nil "e")
-    ("f" nil "f") ("g" nil "g") ("h" nil "h") ("i" nil "i") ("j" nil "j")
-    ("k" nil "k") ("l" nil "l") ("m" nil "m") ("n" nil "n") ("o" nil "o")
-    ("p" nil "p") ("q" nil "q") ("r" nil "r") ("s" nil "s") ("t" nil "t")
-    ("u" nil "u") ("v" nil "v") ("w" nil "w") ("x" nil "x") ("y" nil "y")
-    ("z" nil "z")
-    ("{" nil "{") ("|" nil "|") ("}" nil "}") ("~" nil "~"))
+  '(("!" nil "!") ("\"" nil "\"") ("#" nil "#") ("$" nil "$") ("%" nil "%")
+    ("&" nil "&") ("'" nil "'") ("\(" nil "(") ("\)" nil ")") ("*" nil "*")
+    ("+" nil "+") ("," nil ",") ("-" nil "-") ("." nil ".") ("/" nil "/")
+    ("0" nil "0") ("1" nil "1") ("2" nil "2") ("3" nil "3") ("4" nil "4")
+    ("5" nil "5") ("6" nil "6") ("7" nil "7") ("8" nil "8") ("9" nil "9")
+    (":" nil ":") (";" nil ";") ("<" nil "<") ("=" nil "=") (">" nil ">")
+    ("?" nil "?") ("@" nil "@")
+    ("A" nil "A") ("B" nil "B") ("C" nil "C") ("D" nil "D") ("E" nil "E")
+    ("F" nil "F") ("G" nil "G") ("H" nil "H") ("I" nil "I") ("J" nil "J")
+    ("K" nil "K") ("L" nil "L") ("M" nil "M") ("N" nil "N") ("O" nil "O")
+    ("P" nil "P") ("Q" nil "Q") ("R" nil "R") ("S" nil "S") ("T" nil "T")
+    ("U" nil "U") ("V" nil "V") ("W" nil "W") ("X" nil "X") ("Y" nil "Y")
+    ("Z" nil "Z")
+    ("[" nil "[") ("\\" nil "\\") ("]" nil "]") ("^" nil "^") ("_" nil "_")
+    ("`" nil "`")
+    ("a" nil "a") ("b" nil "b") ("c" nil "c") ("d" nil "d") ("e" nil "e")
+    ("f" nil "f") ("g" nil "g") ("h" nil "h") ("i" nil "i") ("j" nil "j")
+    ("k" nil "k") ("l" nil "l") ("m" nil "m") ("n" nil "n") ("o" nil "o")
+    ("p" nil "p") ("q" nil "q") ("r" nil "r") ("s" nil "s") ("t" nil "t")
+    ("u" nil "u") ("v" nil "v") ("w" nil "w") ("x" nil "x") ("y" nil "y")
+    ("z" nil "z")
+    ("{" nil "{") ("|" nil "|") ("}" nil "}") ("~" nil "~"))
   "*SKK JISX0201 モードの Roman のルール。")
 
 (defvar skk-jisx0201-rule-list
@@ -243,10 +239,8 @@
      (skk-jisx0201-zenkaku-region skk-henkan-start-point
 				  skk-okurigana-start-point))
     ;;
-    (let* ((pt1 (point))
-	   pt2
-	   okuri
-	   sokuon)
+    (let ((pt1 (point))
+	  pt2 okuri sokuon)
       (setq okuri
 	    (skk-save-point
 	     (backward-char 1)
@@ -284,11 +278,11 @@
     ad-do-it)))
 
 (defadvice skk-insert (around skk-jisx0201-ad activate)
-  "SKK JIS X 0201 モードの文字入力を行なう。"
+  "SKK JIS X 0201 モードの文字入力を行う。"
   (cond
    (skk-jisx0201-mode
     (let ((arg (ad-get-arg 0))
-	  (ch last-command-char))
+	  (ch (skk-last-command-char)))
       (cond
        ((or (and (not skk-jisx0201-roman)
 		 (memq ch skk-set-henkan-point-key)
@@ -411,22 +405,19 @@
   (skk-search-and-replace
    start end
    "[ぁ-ん。、・ー゛゜]+"
-   #'(lambda (matched)
-       (save-match-data
-	 (skk-jisx0201-hankaku matched)))))
+   (lambda (matched)
+     (save-match-data
+       (skk-jisx0201-hankaku matched)))))
 
 ;;;###autoload
 (defun skk-katakana-to-jisx0201-region (start end)
   (skk-search-and-replace
    start end
    "[ァ-ヴ。、・ー゛゜]+"
-   #'(lambda (matched)
-       (save-match-data
-	 (skk-jisx0201-hankaku matched)))))
+   (lambda (matched)
+     (save-match-data
+       (skk-jisx0201-hankaku matched)))))
 
-(require 'product)
-(product-provide
-    (provide 'skk-jisx0201)
-  (require 'skk-version))
+(provide 'skk-jisx0201)
 
 ;;; skk-jisx0201.el ends here

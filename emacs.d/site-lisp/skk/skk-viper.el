@@ -7,9 +7,9 @@
 ;; Author: Masahiko Sato <masahiko@kuis.kyoto-u.ac.jp>,
 ;;         Murata Shuuichirou <mrt@notwork.org>
 ;; Maintainer: SKK Development Team <skk@ring.gr.jp>
-;; Version: $Id: skk-viper.el,v 1.40 2007/10/14 10:52:25 skk-cvs Exp $
+;; Version: $Id: skk-viper.el,v 1.47 2012/01/15 06:58:42 skk-cvs Exp $
 ;; Keywords: japanese, mule, input method
-;; Last Modified: $Date: 2007/10/14 10:52:25 $
+;; Last Modified: $Date: 2012/01/15 06:58:42 $
 
 ;; This file is part of Daredevil SKK.
 
@@ -33,7 +33,6 @@
 ;;; Code:
 
 (eval-when-compile
-  (require 'static)
   (require 'skk-macs)
   (require 'skk-vars))
 (require 'viper)
@@ -56,7 +55,9 @@
 
 (setq skk-use-viper t)
 (save-match-data
-  (unless (string-match (static-if (fboundp 'sentence-end)
+  (unless (string-match (if (eval-when-compile
+			      (and (featurep 'emacs)
+				   (>= emacs-major-version 22)))
 			    (sentence-end)
 			  sentence-end)
 			"。？！．")
@@ -135,8 +136,8 @@
     (setq viper-insert-state-cursor-color skk-cursor-hiragana-color)))
 
 (when (boundp 'viper-insert-state-cursor-color)
-  (static-cond
-   ((eq skk-emacs-type 'xemacs)
+  (cond
+   ((eval-when-compile (featurep 'xemacs))
     (skk-defadvice read-from-minibuffer (before skk-viper-ad activate)
       (when skk-use-color-cursor
 	(add-hook 'minibuffer-setup-hook
@@ -183,58 +184,60 @@
       (backward-word (ad-get-arg 0))
     ad-do-it)))
 
-;; please sync with advice to delete-backward-char
+;; please sync with `skk-delete-backward-char'
 (skk-viper-advice-select
  viper-del-backward-char-in-insert vip-delete-backward-char
  (around skk-ad activate)
- ("▼モードで `skk-delete-implies-kakutei' が non-nil だったら直前の文字を消して\
-確定する。
+ ("▼モードで `skk-delete-implies-kakutei' なら直前の文字を消して確定する。
 ▼モードで `skk-delete-implies-kakutei' が nil だったら前候補を表示する。
-▽モードだったら確定する。
+▽モードで`▽'よりも前のポイントで実行すると確定する。
 確定入力モードで、かなプレフィックスの入力中ならば、かなプレフィックスを消す。"
-  (let ((count (or (prefix-numeric-value (ad-get-arg 0)) 1)))
-    (cond
-     ((eq skk-henkan-mode 'active)
-      (if (and (not skk-delete-implies-kakutei)
-	       (= (+ skk-henkan-end-point (length skk-henkan-okurigana))
-		  (point)))
-	  (skk-previous-candidate)
-	;;(if skk-use-face (skk-henkan-face-off))
-	;; overwrite-mode で、ポイントが全角文字に囲まれていると
-	;; きに delete-backward-char を使うと、全角文字は消すが半
-	;; 角文字分しか backward 方向にポイントが戻らない (Emacs
-	;; 19.31 にて確認)。変換中の候補に対しては
-	;; delete-backward-char で必ず全角文字 1 文字分 backward
-	;; 方向に戻った方が良い。
-	(if overwrite-mode
-	    (progn
-	      (backward-char count)
-	      (delete-char count))
-	  ad-do-it)
-	;; XXX assume skk-prefix has no multibyte chars.
-	(if (> (length skk-prefix) count)
-	    (setq skk-prefix (substring skk-prefix
-					0 (- (length skk-prefix) count)))
-	  (setq skk-prefix ""))
-	(when (>= skk-henkan-end-point (point))
-	  (if (eq skk-delete-implies-kakutei 'dont-update)
-	      (let ((skk-update-jisyo-function #'ignore))
-		(skk-kakutei))
-	    (skk-kakutei)))))
-     ((and (eq skk-henkan-mode 'on)
-	   (>= skk-henkan-start-point (point)))
-      (setq skk-henkan-count 0)
-      (skk-kakutei))
-     ;; 入力中の見出し語に対しては delete-backward-char で必ず全角文字 1
-     ;; 文字分 backward 方向に戻った方が良い。
-     ((and (eq skk-henkan-mode 'on)
-	   overwrite-mode)
-      (backward-char count)
-      (delete-char count))
-     (t
-      (if (string= skk-prefix "")
-	  ad-do-it
-	(skk-erase-prefix 'clean)))))))
+  (skk-with-point-move
+   (let ((count (or (prefix-numeric-value (ad-get-arg 0)) 1)))
+     (cond
+      ((eq skk-henkan-mode 'active)
+       (if (and (not skk-delete-implies-kakutei)
+		(= (+ skk-henkan-end-point (length skk-henkan-okurigana))
+		   (point)))
+	   (skk-previous-candidate)
+	 ;; overwrite-mode で、ポイントが全角文字に囲まれていると
+	 ;; きに delete-backward-char を使うと、全角文字は消すが半
+	 ;; 角文字分しか backward 方向にポイントが戻らない (Emacs
+	 ;; 19.31 にて確認)。変換中の候補に対しては
+	 ;; delete-backward-char で必ず全角文字 1 文字分 backward
+	 ;; 方向に戻った方が良い。
+	 (if overwrite-mode
+	     (progn
+	       (backward-char count)
+	       (delete-char count))
+	   ad-do-it)
+	 ;; XXX assume skk-prefix has no multibyte chars.
+	 (if (> (length skk-prefix) count)
+	     (setq skk-prefix (substring skk-prefix
+					 0 (- (length skk-prefix) count)))
+	   (setq skk-prefix ""))
+	 (when (>= skk-henkan-end-point (point))
+	   (if (eq skk-delete-implies-kakutei 'dont-update)
+	       (let ((skk-update-jisyo-function #'ignore))
+		 (skk-kakutei))
+	     (skk-kakutei)))))
+      ((and skk-henkan-mode
+	    (>= skk-henkan-start-point (point))
+	    (not (skk-get-prefix skk-current-rule-tree)))
+       (skk-set-henkan-count 0)
+       (skk-kakutei))
+      ;; 入力中の見出し語に対しては delete-backward-char で
+      ;; 必ず全角文字 1文字分 backward 方向に戻った方が良い。
+      ((and skk-henkan-mode
+	    overwrite-mode)
+       (backward-char count)
+       (delete-char count))
+      (t
+       (skk-delete-okuri-mark)
+       (if (skk-get-prefix skk-current-rule-tree)
+	   (skk-erase-prefix 'clean)
+	 (skk-set-marker skk-kana-start-point nil)
+	 ad-do-it)))))))
 
 (skk-viper-advice-select
  viper-intercept-ESC-key vip-escape-to-emacs
@@ -272,7 +275,7 @@
 ;;;###autoload
 (defun skk-viper-normalize-map ()
   (let ((other-buffer
-	 (static-if (eq skk-emacs-type 'xemacs)
+	 (if (eval-when-compile (featurep 'xemacs))
 	     (local-variable-p 'minor-mode-map-alist nil t)
 	   (local-variable-if-set-p 'minor-mode-map-alist))))
     ;; for current buffer and buffers to be created in the future.
@@ -284,13 +287,10 @@
       ;; the minor-mode-map-alist localized by Viper.
       (skk-loop-for-buffers (buffer-list)
 	(unless (assq 'skk-j-mode minor-mode-map-alist)
-	  (set-modified-alist
-	   'minor-mode-map-alist
-	   (list (cons 'skk-latin-mode skk-latin-mode-map)
-		 (cons 'skk-abbrev-mode skk-abbrev-mode-map)
-		 (cons 'skk-j-mode skk-j-mode-map)
-		 (cons 'skk-jisx0208-latin-mode
-		       skk-jisx0208-latin-mode-map))))
+	  (skk-update-minor-mode-map-alist 'skk-latin-mode skk-latin-mode-map)
+	  (skk-update-minor-mode-map-alist 'skk-abbrev-mode skk-abbrev-mode-map)
+	  (skk-update-minor-mode-map-alist 'skk-j-mode skk-j-mode-map)
+	  (skk-update-minor-mode-map-alist 'skk-jisx0208-mode skk-jisx0208-latin-mode-map))
 	(funcall skk-viper-normalize-map-function)))))
 
 (eval-after-load "viper-cmd"
@@ -328,9 +328,6 @@ Convert hirakana to katakana and vice versa."
 
 (add-hook 'skk-mode-hook 'skk-viper-init-function)
 
-(require 'product)
-(product-provide
-    (provide 'skk-viper)
-  (require 'skk-version))
+(provide 'skk-viper)
 
 ;;; skk-viper.el ends here
