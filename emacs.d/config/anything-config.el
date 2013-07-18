@@ -155,47 +155,5 @@
 (global-set-key (kbd "C-:") 'anything-filelist+)
 (setq anything-c-filelist-file-name "/tmp/all.filelist")
 
-
-
-
-
-;; http://shibayu36.hatenablog.com/#20121222135157
-
-(defun chomp (str)
-  (replace-regexp-in-string "[\n\r]+$" "" str))
-
-(defun anything-git-project-project-dir ()
-  (chomp
-   (shell-command-to-string "git rev-parse --show-toplevel")))
-
-(defun anything-c-sources-git-project-for ()
-  (loop for elt in
-        '(("Modified files (%s)" . "--modified")
-          ("Untracked files (%s)" . "--others --exclude-standard")
-          ("All controlled files in this project (%s)" . ""))
-        collect
-        `((name . ,(format (car elt) (anything-git-project-project-dir)))
-          (init . (lambda ()
-                    (unless (and ,(string= (cdr elt) "") ;update candidate buffer every time except for that of all project files
-                                 (anything-candidate-buffer))
-                      (with-current-buffer
-                          (anything-candidate-buffer 'global)
-                        (insert
-                         (shell-command-to-string
-                          ,(format "git ls-files --full-name $(git rev-parse --show-cdup) %s"
-                                   (cdr elt))))))))
-          (candidates-in-buffer)
-          (display-to-real . (lambda (name)
-                               (format "%s/%s"
-                                       (anything-git-project-project-dir) name)))
-          (type . file))))
-
-(defun anything-git-project ()
-  (interactive)
-  (let* ((sources (anything-c-sources-git-project-for)))
-    (anything-other-buffer sources
-                           (format "*Anything git project in %s*"
-                                   (anything-git-project-project-dir)))))
-
 (require 'anything-git-files)
 (global-set-key (kbd "M-p") 'anything-git-files)
