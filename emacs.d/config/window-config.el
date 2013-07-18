@@ -28,7 +28,7 @@
   (set-face-foreground 'ac-selection-face "#fdf6e3")
   ;;)
 
-  (when (= emacs-major-version 23)
+  (when (>= emacs-major-version 23)
     (set-face-attribute 'default nil
                         :family "Monaco"
                         :height 120)
