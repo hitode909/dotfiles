@@ -26,3 +26,6 @@ test.db
 .bundle
 
 /local/
+
+.emacs.desktop
+.emacs.desktop.lock
