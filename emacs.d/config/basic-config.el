@@ -451,7 +451,7 @@
 
 
 
-(global-set-key [(super m)] 'ns-toggle-fullscreen)
+(global-set-key [(super m)] 'toggle-frame-fullscreen)
 
 (require 'zizo)
 

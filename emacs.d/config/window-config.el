@@ -46,4 +46,6 @@
             ("-cdac$" . 1.4)))
     )
 
+  (setq ns-use-native-fullscreen nil)
+
   )
