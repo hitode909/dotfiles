@@ -10,7 +10,7 @@
 (load-file "~/.emacs.d/config/server-config.el")
 (load-file "~/.emacs.d/config/window-config.el")
 (load-file "~/.emacs.d/config/anything-config.el")
-(load-file "~/.emacs.d/config/yasnippet-config.el")
+;; (load-file "~/.emacs.d/config/yasnippet-config.el")
 ;; (load-file "~/.emacs.d/config/auto-revert-mode-config.el")
 (load-file "~/.emacs.d/config/carbon-config.el")
 (load-file "~/.emacs.d/config/perl-config.el")
