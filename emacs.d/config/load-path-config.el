@@ -43,14 +43,17 @@
 (setenv "PATH" (concat '"/usr/local/share/npm/bin:" (getenv "PATH")))
 (setq exec-path (cons "/usr/local/share/npm/bin" exec-path))
 
-(setenv "PATH" (concat '"/Users/fkd/bin:" (getenv "PATH")))
-(setq exec-path (cons "/Users/fkd/bin" exec-path))
+(setenv "PATH" (concat '"/Users/hitode909/homebrew/bin:" (getenv "PATH")))
+(setq exec-path (cons "/Users/hitode909/homebrew/bin" exec-path))
 
-(setenv "PATH" (concat '"/Users/fkd/perl5/perlbrew/bin:" (getenv "PATH")))
-(setq exec-path (cons "/Users/fkd/perl5/perlbrew/bin" exec-path))
+(setenv "PATH" (concat '"/Users/hitode909/bin:" (getenv "PATH")))
+(setq exec-path (cons "/Users/hitode909/bin" exec-path))
 
-(setenv "PATH" (concat '"/Users/fkd/perl5/perlbrew/perls/current/bin:" (getenv "PATH")))
-(setq exec-path (cons "/Users/fkd/perl5/perlbrew/perls/current/bin" exec-path))
+(setenv "PATH" (concat '"/Users/hitode909/perl5/perlbrew/bin:" (getenv "PATH")))
+(setq exec-path (cons "/Users/hitode909/perl5/perlbrew/bin" exec-path))
+
+(setenv "PATH" (concat '"/Users/hitode909/perl5/perlbrew/perls/current/bin:" (getenv "PATH")))
+(setq exec-path (cons "/Users/hitode909/perl5/perlbrew/perls/current/bin" exec-path))
 
 
 (setenv "LANG" "en_US.UTF-8")
