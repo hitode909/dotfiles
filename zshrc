@@ -206,6 +206,8 @@ bindkey '^S' history-incremental-pattern-search-forward
 #     chpwd
 # fi
 
+eval "$(rbenv init - zsh)"
+
 # set_proxy
 if [ -f ~/co/gist/630018/set_proxy ]
 then
@@ -405,7 +407,7 @@ then
     source $HOME/perl5/perlbrew/etc/bashrc
 fi
 
-which perlbrew >& /dev/null && perlbrew use perl-5.8.9
+which perlbrew >& /dev/null && perlbrew use perl-5.14.2
 
 export PERL5LIB=~/perl5/lib
 
@@ -421,13 +423,13 @@ zstyle ':completion:*' use-cache true
 function hatena () {
     if pwd | grep "Hatena" > /dev/null; then
         echo "～ ☆をくれた人に「カラースター」でお返ししよう！ ～"
-        rvm use ruby-1.8.7-p352
+        # rvm use ruby-1.8.7-p352
     fi
 
     if pwd | grep "Epic" > /dev/null; then
         echo "5.14.2"
         echo "1.9.2"
-        rvm use ruby-1.9.2-p290
+        # rvm use ruby-1.9.2-p290
         perlbrew use perl-5.14.2
     fi
 }
