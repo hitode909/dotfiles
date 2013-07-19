@@ -786,3 +786,29 @@ This is an internal function used by Auto-Revert Mode."
 (add-hook 'after-init-hook
 	  '(lambda ()
              (desktop-read)))
+
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(package-initialize)
+
+;; なんかautoload余計なおせわ機能が変にうごいてて
+;; だめなときあるので無効にするのが吉
+;; -- typester
+(setq el-get-generate-autoloads nil)
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+
+(mapc
+ (lambda (package)
+   (or (package-installed-p package)
+       (package-install package)))
+ '(
+   helm
+   ))
