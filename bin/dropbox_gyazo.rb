@@ -12,6 +12,9 @@ FileUtils.mkdir_p File.dirname(file)
 system "screencapture -i \"#{file}\""
 if File.exist?(file) then
   system "sips -d profile --deleteColorManagementProperties \"#{file}\""
+  system "mogrify -resize 50% \"#{file}\""
+else
+  exit
 end
 
 retries = 0
