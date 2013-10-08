@@ -26,6 +26,9 @@ export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:${PKG_CONFIG_PATH}
 # npm
 export PATH=/usr/local/share/npm/bin:$PATH
 
+export PATH=/usr/local/mysql/bin:$PATH
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:$DYLD_LIBRARY_PATH
+
 if [ "$TERM" != "dumb" ]; then
 # プロンプトの設定　右にpwd出したり
 case $UID in
@@ -61,6 +64,8 @@ alias perlcode="perldoc -m"
 alias killf="kill -9"
 alias g="magit-status"
 alias ig="tig"
+alias ce="carton exec -- "
+alias ci="carton install"
 
 function e()
 {
@@ -321,7 +326,7 @@ function chpwd()
   #_gprompt
   #git_status
   set_screen_title_pwd
-  hatena
+  # hatena
 }
 
 set_screen_title_pwd
@@ -402,14 +407,14 @@ fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
-if [ -f $HOME/perl5/perlbrew/etc/bashrc ]
-then
-    source $HOME/perl5/perlbrew/etc/bashrc
-fi
+# if [ -f $HOME/perl5/perlbrew/etc/bashrc ]
+# then
+#     source $HOME/perl5/perlbrew/etc/bashrc
+# fi
 
-which perlbrew >& /dev/null && perlbrew use perl-5.14.2
+# which perlbrew >& /dev/null && perlbrew use perl-5.14.2
 
-export PERL5LIB=~/perl5/lib
+# export PERL5LIB=~/perl5/lib
 
 # alias git=hub
 # compdef hub=git
@@ -434,7 +439,7 @@ function hatena () {
     fi
 }
 
-hatena
+# hatena
 
 ###begin-jump-bash_profile
 #
@@ -496,3 +501,6 @@ bindkey '^m' do_enter
 alias keyoff='sudo kextunload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext/'
 
 alias keyon='sudo kextload /System/Library/Extensions/AppleUSBTopCase.kext/Contents/PlugIns/AppleUSBTCKeyboard.kext/'
+
+eval "$(plenv init -)"
+

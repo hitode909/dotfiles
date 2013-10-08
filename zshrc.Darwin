@@ -24,11 +24,9 @@ export EDITOR=emacsclient
 # export XDG_DATA_DIRS=/usr/local/Cellar/shared-mime-info/0.90/share
 # update-mime-database /usr/local/Cellar/shared-mime-info/0.90/share/mime/
 
-export PATH=/usr/local/mysql/bin:$PATH
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib
 
 # export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:/usr/xX11/lib
 
- unalias run-help
-  autoload run-help
-  HELPDIR=/Users/hitode909/homebrew/share/zsh/helpfiles
+ # unalias run-help
+ #  autoload run-help
+ #  HELPDIR=/Users/hitode909/homebrew/share/zsh/helpfiles
