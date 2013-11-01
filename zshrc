@@ -504,3 +504,7 @@ alias keyon='sudo kextload /System/Library/Extensions/AppleUSBTopCase.kext/Conte
 
 eval "$(plenv init -)"
 
+
+
+for f (~/co/dotfiles/percol-sources/*) source "${f}"
+bindkey '^t' percol-select-history
