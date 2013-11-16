@@ -495,4 +495,13 @@ eval "$(plenv init -)"
 
 
 for f (~/co/dotfiles/percol-sources/*) source "${f}"
-bindkey '^t' percol-select-history
+bindkey '^r' percol-select-history
+
+bindkey '^x^b' percol-git-recent-branches
+bindkey '^xb' percol-git-recent-all-branches
+
+bindkey '^xp' percol-perl-prove
+bindkey '^x^p' percol-perl-prove-test-class
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
