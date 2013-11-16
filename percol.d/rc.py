@@ -37,7 +37,7 @@ if sys.platform == "darwin":
 
 ## 表示の設定
 percol.view.CANDIDATES_LINE_BASIC    = ("on_white", "black")
-percol.view.CANDIDATES_LINE_SELECTED = ("underline", "on_white", "black")
+percol.view.CANDIDATES_LINE_SELECTED = ("underline", "on_white", "red")
 percol.view.CANDIDATES_LINE_MARKED   = ("bold", "on_cyan", "black")
 percol.view.CANDIDATES_LINE_QUERY    = ("on_black", "white", "bold")
 
