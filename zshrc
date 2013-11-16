@@ -464,18 +464,6 @@ export HADOOP_HOME=/usr/local/Cellar/hadoop/0.20.2
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
-source ~/co/zaw/zaw.zsh
-
-bindkey '^T' zaw-history
-
-export ZAW_HISTORY_LIMIT=5000
-
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-
-
 function do_enter() {
     if [ -n "$BUFFER" ]; then
         zle accept-line
