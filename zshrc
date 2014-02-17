@@ -505,3 +505,8 @@ bindkey '^x^p' percol-perl-prove-test-class
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+
+alias be="bundle exec"
+alias bi="bundle install"
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
