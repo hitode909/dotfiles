@@ -25,4 +25,4 @@ rescue
   retry
 end
 
-system "open #{url}"
+system "open -a Safari -g #{url}"
