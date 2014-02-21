@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ $# -ne 2 ]
+then
+    echo 'usage: git rewrite $PATTERN $REPLACEMENT' 1>&2
+    exit 1
+fi
+
+echo "s/$1/$2/g" 1>&2
+
+git grep -l $1 | xargs sed -i '' -e "s/$1/$2/g"
+git status
