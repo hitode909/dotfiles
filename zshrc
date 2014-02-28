@@ -510,3 +510,12 @@ alias be="bundle exec"
 alias bi="bundle install"
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+function cliime() {
+  if [ $# = 0 ]; then
+    echo "usage: cliime RO-MAJI"
+    return 1
+  fi
+
+  BUNDLE_GEMFILE=~/co/cliime/Gemfile bundle exec -- ruby ~/co/cliime/cliime.rb $@ | percol | pbcopy
+}
