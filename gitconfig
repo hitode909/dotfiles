@@ -12,8 +12,10 @@
         current-branch = "!sh -c 'git name-rev --name-only HEAD'"
         cancel = !git commit -a -m 'Temporary commit for cancel' && git reset --hard HEAD~
 [push]
-	default = current
+	default = upstream
 [branch]
 	autosetuprebase = always
 [color]
 	ui = auto
+[help]
+	autocorrect = 0

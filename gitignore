@@ -31,3 +31,12 @@ test.db
 .emacs.desktop.lock
 
 node_modules
+/cover_db/
+/nytprof
+
+/blib/
+/_build/
+MYMETA.json
+MYMETA.yml
+
+*.elc

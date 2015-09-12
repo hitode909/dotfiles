@@ -124,8 +124,8 @@ setopt nocheckjobs
 
 # 履歴の設定
 HISTFILE=~/.zsh_history
-HISTSIZE=10000000
-SAVEHIST=10000000
+HISTSIZE=1000000000
+SAVEHIST=1000000000
 # 連続して同じコマンドのとき履歴に追加しない
 setopt hist_ignore_dups
 # 複数のシェルの履歴を共有
@@ -388,10 +388,7 @@ function f()
 
 function h()
 {
-    cd
-    if [ $# = 1 ]; then
-        cd $1
-    fi
+    git checkout staging/master
 }
 
 setopt magic_equal_subst
@@ -519,3 +516,7 @@ function cliime() {
 
   BUNDLE_GEMFILE=~/co/cliime/Gemfile bundle exec -- ruby ~/co/cliime/cliime.rb $@ | percol | pbcopy
 }
+export PATH="$HOME/.ndenv/bin:$PATH"
+eval "$(ndenv init -)"
+
+export ANE="姉"
