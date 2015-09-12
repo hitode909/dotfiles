@@ -489,17 +489,6 @@ alias keyon='sudo kextload /System/Library/Extensions/AppleUSBTopCase.kext/Conte
 
 eval "$(plenv init -)"
 
-
-
-for f (~/co/dotfiles/percol-sources/*) source "${f}"
-bindkey '^r' percol-select-history
-
-bindkey '^x^b' percol-git-recent-branches
-bindkey '^xb' percol-git-recent-all-branches
-
-bindkey '^xp' percol-perl-prove
-bindkey '^x^p' percol-perl-prove-test-class
-
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
 
@@ -520,3 +509,19 @@ export PATH="$HOME/.ndenv/bin:$PATH"
 eval "$(ndenv init -)"
 
 export ANE="姉"
+
+function peco-select-history() {
+    local tac
+    if which tac > /dev/null; then
+        tac="tac"
+    else
+        tac="tail -r"
+    fi
+    BUFFER=$(history -n 1 | \
+        eval $tac | \
+        peco --query "$LBUFFER")
+    CURSOR=$#BUFFER
+    zle clear-screen
+}
+zle -N peco-select-history
+bindkey '^r' peco-select-history
