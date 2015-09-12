@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<root>
+  <item>
+    <name>Change Space Key</name>
+    <item>
+      <name>SandS Classic</name>
+      <appendix>* Change the space key to the left shift key.</appendix>
+      <appendix>* Send a space key event when the space key is pressed alone.</appendix>
+      <appendix></appendix>
+      <appendix>For example:</appendix>
+      <appendix><![CDATA[  Space down -> T down -> T up => Shift+T  ]]></appendix>
+      <identifier>remap.sands.classic</identifier>
+      <autogen>
+        __KeyOverlaidModifier__
+        KeyCode::SPACE,
+
+        KeyCode::SHIFT_L, ModifierFlag::SANDS2,
+
+        KeyCode::SPACE,
+      </autogen>
+    </item>
+  </item>
+</root>
