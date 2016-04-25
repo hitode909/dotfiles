@@ -30,3 +30,5 @@ export EDITOR=emacsclient
  # unalias run-help
  #  autoload run-help
  #  HELPDIR=/Users/hitode909/homebrew/share/zsh/helpfiles
+
+/Library/Application\ Support/Symantec/SymQuickMenu/QMTool --hide
